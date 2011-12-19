@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/cap.iml" filepath="$PROJECT_DIR$/cap.iml" />
       <module fileurl="file://$PROJECT_DIR$/cap-grails/cap-grails.iml" filepath="$PROJECT_DIR$/cap-grails/cap-grails.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cap-grails/cap-grails-grailsPlugins.iml" filepath="$PROJECT_DIR$/cap-grails/cap-grails-grailsPlugins.iml" />
       <module fileurl="file://$PROJECT_DIR$/portal/portal.iml" filepath="$PROJECT_DIR$/portal/portal.iml" />
     </modules>
   </component>
