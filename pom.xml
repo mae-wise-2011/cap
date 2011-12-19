@@ -32,12 +32,12 @@
     <repository>
       <id>releases</id>
       <name>Releases</name>
-      <url>http://se-labor-7.f4.htw-berlin.de:8080/artifactory/libs-release</url>
+      <url>http://se-labor-7.f4.htw-berlin.de:8080/artifactory/libs-release-local</url>
     </repository>
     <snapshotRepository>
       <id>snapshots</id>
       <name>Snapshots</name>
-      <url>http://se-labor-7.f4.htw-berlin.de:8080/artifactory/libs-snapshot</url>
+      <url>http://se-labor-7.f4.htw-berlin.de:8080/artifactory/libs-snapshot-local</url>
     </snapshotRepository>
   </distributionManagement>
 
