@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Maven: javax:javaee-web-api:6.0">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/javax/javaee-web-api/6.0/javaee-web-api-6.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
