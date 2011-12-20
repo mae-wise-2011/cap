@@ -3,3 +3,5 @@
 /portal/target/
 /grails-app/cap-grails/.settings/
 /cap-grails/.settings
+/cap-webapp/.settings/
+/cap-webapp/target/

@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>de.htw</groupId>
   <artifactId>cap</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
+  <version>1.0-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>CaP Portal</name>
   <description/>
@@ -43,6 +43,10 @@
 
   <dependencyManagement>
   </dependencyManagement>
+  
+  <modules>
+    <module>cap-webapp</module>
+  </modules>
 
   <build>
     <pluginManagement>
