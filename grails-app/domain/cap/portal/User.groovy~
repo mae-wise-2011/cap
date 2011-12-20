@@ -1,0 +1,7 @@
+package cap.portal
+
+class User {
+
+    static constraints = {
+    }
+}
