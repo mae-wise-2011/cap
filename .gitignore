@@ -1,1 +1,5 @@
 /target/
+/.idea/
+/portal/target/
+/grails-app/cap-grails/.settings/
+/cap-grails/.settings
