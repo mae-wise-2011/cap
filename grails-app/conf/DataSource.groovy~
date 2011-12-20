@@ -1,0 +1,42 @@
+dataSource {
+    pooled = true
+    driverClassName = "com.mysql.jdbc.Driver"
+    dialect = org.hibernate.dialect.MySQL5InnoDBDialect
+    username = "root"
+    password = "MAE_2011"
+}
+hibernate {
+    cache.use_second_level_cache = true
+    cache.use_query_cache = true
+    cache.provider_class = 'net.sf.ehcache.hibernate.EhCacheProvider'
+}
+// environment specific settings
+environments {
+    development {
+        dataSource {
+            dbCreate = "create-drop" // one of 'create', 'create-drop','update'
+            driverClassName = "com.mysql.jdbc.Driver"
+            url = "jdbc:mysql://http://se-labor-7.f4.htw-berlin.de:3306/cap_dev"
+            username = "root"
+            password = "MAE_2011"
+        }
+    }
+    test {
+        dataSource {
+            dbCreate = "update"
+            driverClassName = "com.mysql.jdbc.Driver"
+            url = "jdbc:mysql://http://se-labor-7.f4.htw-berlin.de:3306/cap_test"
+            username = "root"
+            password = "MAE_2011"
+        }
+    }
+    production {
+        dataSource {
+            dbCreate = "update"
+            driverClassName = "com.mysql.jdbc.Driver"
+            url = "jdbc:mysql://http://se-labor-7.f4.htw-berlin.de:3306/cap_prod"
+            username = "root"
+            password = "MAE_2011"
+        }
+    }
+}
