@@ -42,9 +42,6 @@
       <url>http://se-labor-7.f4.htw-berlin.de:8080/artifactory/libs-snapshot-local</url>
     </snapshotRepository>
   </distributionManagement>
-
-  <dependencyManagement>
-  </dependencyManagement>
   
   <properties>
     <grails.version>1.3.7</grails.version>
