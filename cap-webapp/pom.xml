@@ -1,163 +1,302 @@
-<?xml version="1.0" encoding="UTF-8"?><project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<?xml version="1.0" encoding="utf-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <parent>
-      <groupId>de.htw.berlin</groupId>
-      <artifactId>cap</artifactId>
-      <version>1.0-SNAPSHOT</version>
-  </parent>
-  <groupId>de.htw.berlin</groupId>
-  <artifactId>cap-webapp</artifactId>
+  <groupId>example</groupId>
+  <artifactId>cap-portal</artifactId>
   <packaging>war</packaging>
-  <version>1.0-SNAPSHOT</version>
-
+  <version>1.0.SNAPSHOT</version>
+  
+  <name>CaP Portal</name>
+  <description>ALM mit Open-Source</description>
+  <licenses>
+    <license>
+      <name>The Apache Software License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+  <scm>
+    <connection>nullgit://github.com/mae-wise-2011//cap/trunk/cap</connection>
+    <developerConnection>nullgit://github.com/mae-wise-2011//cap/trunk/cap</developerConnection>
+    <url>https://github.com/mae-wise-2011/</url>
+  </scm>
+  <issueManagement>
+    <system>Redmine</system>
+    <url>http://se-labor-7.f4.htw-berlin.de:3000/projects/show/cap/</url>
+  </issueManagement>
+  <ciManagement>
+    <system>jenkins</system>
+    <url>http://se-labor-7.f4.htw-berlin.de:8080/jenkins/job/cap/</url>
+  </ciManagement>
+  <distributionManagement>
+    <repository>
+      <id>releases</id>
+      <name>Releases</name>
+      <url>http://se-labor-7.f4.htw-berlin.de:8080/artifactory/libs-release-local</url>
+    </repository>
+    <snapshotRepository>
+      <id>snapshots</id>
+      <name>Snapshots</name>
+      <url>http://se-labor-7.f4.htw-berlin.de:8080/artifactory/libs-snapshot-local</url>
+    </snapshotRepository>
+  </distributionManagement>
+  
+  <properties>
+    <grails.version>1.3.7</grails.version>
+  </properties>
+  
   <dependencies>
     <dependency>
       <groupId>org.grails</groupId>
       <artifactId>grails-bootstrap</artifactId>
-      <version>1.3.2</version>
+      <version>${grails.version}</version>
+      <exclusions>
+        <exclusion>
+          <groupId>org.codehaus.gpars</groupId>
+          <artifactId>gpars</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.codehaus.gant</groupId>
+          <artifactId>gant_groovy1.7</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.gparallelizer</groupId>
+          <artifactId>GParallelizer</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.codehaus.gant</groupId>
+          <artifactId>gant_groovy1.6</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.apache.ant</groupId>
+          <artifactId>ant</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.apache.ant</groupId>
+          <artifactId>ant-launcher</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.apache.ivy</groupId>
+          <artifactId>ivy</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
-	
+    
     <dependency>
       <groupId>org.grails</groupId>
       <artifactId>grails-crud</artifactId>
-      <version>1.3.2</version>
+      <version>${grails.version}</version>
+      <exclusions>
+        <exclusion>
+          <groupId>org.grails</groupId>
+          <artifactId>grails-docs</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.apache.ant</groupId>
+          <artifactId>ant</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.apache.ant</groupId>
+          <artifactId>ant-launcher</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-test</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>radeox</groupId>
+          <artifactId>radeox</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>commons-digester</groupId>
+          <artifactId>commons-digester</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>javax.persistence</groupId>
+          <artifactId>persistence-api</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>junit</groupId>
+          <artifactId>junit</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
+    
     <dependency>
       <groupId>org.grails</groupId>
       <artifactId>grails-gorm</artifactId>
-      <version>1.3.2</version>
-    </dependency>
-
-	<!-- Needed in the case of AOP usage -->
-    <dependency>
-        <groupId>org.aspectj</groupId>
-        <artifactId>aspectjweaver</artifactId>
-        <version>1.6.8</version>
-    </dependency>        
-
-    <dependency>
-        <groupId>org.aspectj</groupId>
-        <artifactId>aspectjrt</artifactId>
-        <version>1.6.8</version>
-    </dependency>	
-
-    <!-- Grails defaults to Ehache for the second-level Hibernate cache. -->
-	<dependency>
-	  <groupId>org.hibernate</groupId>
-	  <artifactId>hibernate-ehcache</artifactId>
-	  <version>3.3.1.GA</version>
-      <!-- see http://www.slf4j.org/faq.html#IllegalAccessError -->
+      <version>${grails.version}</version>
       <exclusions>
-         <exclusion>
-           <groupId>org.slf4j</groupId>
-           <artifactId>slf4j-api</artifactId>
-       	 </exclusion>
-   	   </exclusions>	
-	</dependency>
-
-	<!-- Use javassist as the bytecode manipulation provider for Hibernate -->
-    <dependency>
-        <groupId>javassist</groupId>
-        <artifactId>javassist</artifactId>
-        <version>3.11.0.GA</version>            
-    </dependency>
-	
-	<dependency>
-	  <groupId>net.sf.ehcache</groupId>
-	  <artifactId>ehcache-core</artifactId>
-	  <version>1.7.1</version>
-      <exclusions>
-          <exclusion>
-              <artifactId>jms</artifactId>
-          </exclusion>
-          <exclusion>
-              <artifactId>servlet-api</artifactId>
-          </exclusion>
-          <exclusion>
-           	  <groupId>org.slf4j</groupId>
-           	  <artifactId>slf4j-api</artifactId>
-       	  </exclusion>
-          <!-- We have JCL-over-SLF4J instead. -->
-          <exclusion>
-              <artifactId>commons-logging</artifactId>
-          </exclusion>
+        <exclusion>
+          <groupId>org.apache.ant</groupId>
+          <artifactId>ant</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.apache.ant</groupId>
+          <artifactId>ant-launcher</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>commons-digester</groupId>
+          <artifactId>commons-digester</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>junit</groupId>
+          <artifactId>junit</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.hibernate</groupId>
+          <artifactId>hibernate</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.hibernate</groupId>
+          <artifactId>hibernate-annotations</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.hibernate</groupId>
+          <artifactId>hibernate-commons-annotations</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>antlr</groupId>
+          <artifactId>antlr</artifactId>
+        </exclusion>
       </exclusions>
-	</dependency>
-
+    </dependency>
+    
+    <dependency>
+      <groupId>org.grails</groupId>
+      <artifactId>grails-test</artifactId>
+      <version>${grails.version}</version>
+      <scope>test</scope>
+    </dependency>
+    
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>jstl</artifactId>
+      <version>1.1.2</version>
+    </dependency>
+    
+    <dependency>
+      <groupId>taglibs</groupId>
+      <artifactId>standard</artifactId>
+      <version>1.1.2</version>
+    </dependency>
+    
+    <!-- Grails defaults to Ehache for the second-level Hibernate cache. -->
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-ehcache</artifactId>
+      <version>3.3.1.GA</version>
+        <exclusions>
+          <!-- See http://www.slf4j.org/faq.html#IllegalAccessError -->
+          <exclusion>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+          </exclusion>
+          
+          <!-- We are pulling in ehcache-core below -->
+          <exclusion>
+            <groupId>net.sf.ehcache</groupId>
+            <artifactId>ehcache</artifactId>
+          </exclusion>
+        </exclusions>
+    </dependency>
+        
+    <dependency>
+      <groupId>net.sf.ehcache</groupId>
+      <artifactId>ehcache-core</artifactId>
+      <version>1.7.1</version>
+      <exclusions>
+        <exclusion>
+          <groupId>org.slf4j</groupId>
+          <artifactId>slf4j-api</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    
     <!-- For ease of development and testing, we include the HSQLDB database. -->
     <dependency>
       <groupId>hsqldb</groupId>
       <artifactId>hsqldb</artifactId>
       <version>1.8.0.10</version>
     </dependency>
-
-    <!-- Use Log4J for logging. This artifact also pulls in the Log4J JAR.
+    
+    <!-- Use Log4J for logging. This artifact also pulls in the Log4J JAR. -->
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>1.5.8</version>
+      <scope>runtime</scope>
+    </dependency>
     <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-log4j12</artifactId>
       <version>1.5.8</version>
       <scope>runtime</scope>
-    </dependency> -->
+    </dependency>
+    
+    <!-- Needed in the case of AOP usage -->
+    <dependency>
+      <groupId>org.aspectj</groupId>
+      <artifactId>aspectjweaver</artifactId>
+      <version>1.6.8</version>
+    </dependency>
     
     <dependency>
-        <groupId>org.slf4j</groupId>
-        <artifactId>slf4j-jdk14</artifactId>
-        <version>1.5.8</version>
+      <groupId>org.aspectj</groupId>
+      <artifactId>aspectjrt</artifactId>
+      <version>1.6.8</version>
     </dependency>
-
+    
     <dependency>
-      <groupId>javax.servlet</groupId>
-      <artifactId>jstl</artifactId>
-      <version>1.2</version>
+      <groupId>commons-codec</groupId>
+      <artifactId>commons-codec</artifactId>
+      <version>1.3</version>
     </dependency>
+    
+    <dependency>
+      <groupId>commons-collections</groupId>
+      <artifactId>commons-collections</artifactId>
+      <version>3.2.1</version>
+    </dependency>
+    
+    <dependency>
+      <groupId>commons-pool</groupId>
+      <artifactId>commons-pool</artifactId>
+      <version>1.5.3</version>
+    </dependency>
+    
   </dependencies>
-
+  
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>log4j</groupId>
+        <artifactId>log4j</artifactId>
+        <version>1.2.16</version>
+        <scope>runtime</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+  
   <repositories>
-    <!-- Required to get hold of JTA -->
+	  <!-- Required to get hold of javassist:javassist -->
     <repository>
-        <id>jboss.org</id>
-        <name>jboss.org</name>            
-        <url>http://repository.jboss.com/maven2/</url>
-    </repository>
-    <repository>
-      <id>maven2-repository.dev.java.net</id>
-      <name>Java.net Repository for Maven</name>
-      <url>http://download.java.net/maven/2/</url>
-      <layout>default</layout>
-    </repository>
-    <repository>
-      <id>Codehaus Snapshots</id>
-      <url>http://snapshots.repository.codehaus.org</url>
-      <snapshots>
-        <enabled>true</enabled>
-      </snapshots>
-      <releases>
-        <enabled>false</enabled>
-      </releases>
+      <id>jboss.org</id>
+      <name>jboss.org</name>
+      <url>http://repository.jboss.com/maven2/</url>
     </repository>
   </repositories>
-
-  <pluginRepositories>
-    <pluginRepository>
-      <id>Codehaus Snapshots</id>
-      <url>http://snapshots.repository.codehaus.org</url>
-      <snapshots>
-        <enabled>true</enabled>
-      </snapshots>
-      <releases>
-        <enabled>false</enabled>
-      </releases>
-    </pluginRepository>
-  </pluginRepositories>
-
+  
   <build>
     <pluginManagement />
+    
     <plugins>
       <plugin>
         <groupId>org.grails</groupId>
         <artifactId>grails-maven-plugin</artifactId>
-        <version>1.3.2</version>
+        <version>${grails.version}</version>
         <extensions>true</extensions>
         <executions>
           <execution>
@@ -174,15 +313,23 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
           </execution>
         </executions>
       </plugin>
+      
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
         <configuration>
-          <source>1.5</source>
-          <target>1.5</target>
+          <source>1.6</source>
+          <target>1.6</target>
         </configuration>
+      </plugin>
+      
+      <plugin>
+         <groupId>org.codehaus.sonar</groupId>
+         <artifactId>sonar-maven3-plugin</artifactId>
+         <version>2.12</version>
       </plugin>
     </plugins>
   </build>
+  
   <profiles>
     <profile>
       <id>tools</id>
