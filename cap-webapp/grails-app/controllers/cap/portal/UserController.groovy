@@ -97,4 +97,8 @@ class UserController {
             redirect(action: "list")
         }
     }
+    
+    def jan = {
+        int i = 0;
+    }
 }
