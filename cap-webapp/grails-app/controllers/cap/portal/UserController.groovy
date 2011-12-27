@@ -97,4 +97,5 @@ class UserController {
             redirect(action: "list")
         }
     }
+    
 }
