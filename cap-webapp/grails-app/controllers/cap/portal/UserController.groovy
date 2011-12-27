@@ -98,7 +98,4 @@ class UserController {
         }
     }
     
-    def jan = {
-        int i = 0;
-    }
 }
