@@ -65,7 +65,7 @@
   </dependencyManagement>
   
   <modules>
-    <module>cap-webapp</module>
+    
     <module>portal</module>
   </modules>
 
