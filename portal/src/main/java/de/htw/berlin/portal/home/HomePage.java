@@ -6,7 +6,7 @@ package de.htw.berlin.portal.home;
 
 import de.htw.berlin.portal.PortalSession;
 import de.htw.berlin.portal.auth.Restricted;
-import org.apache.wicket.markup.html.WebPage;
+import de.htw.berlin.portal.basepage.BasePage;
 import org.apache.wicket.markup.html.basic.Label;
 
 /**
@@ -14,7 +14,7 @@ import org.apache.wicket.markup.html.basic.Label;
  * @author Konrad
  */
 @Restricted
-public final class HomePage extends WebPage {
+public final class HomePage extends BasePage {
 
     public HomePage() {
         super();

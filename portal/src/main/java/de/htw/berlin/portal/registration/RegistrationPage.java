@@ -5,10 +5,10 @@
 package de.htw.berlin.portal.registration;
 
 import de.htw.berlin.portal.PortalSession;
+import de.htw.berlin.portal.basepage.BasePage;
 import de.htw.berlin.portal.domain.User;
 import de.htw.berlin.portal.domain.service.UserService;
 import java.util.logging.Logger;
-import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.PasswordTextField;
@@ -21,7 +21,7 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
  *
  * 
  */
-public class RegistrationPage extends WebPage{
+public class RegistrationPage extends BasePage{
     
     private static final Logger log = Logger.getLogger(RegistrationPage.class.getName());
     

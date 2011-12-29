@@ -5,12 +5,12 @@
 package de.htw.berlin.portal.login;
 
 import de.htw.berlin.portal.PortalSession;
+import de.htw.berlin.portal.basepage.BasePage;
 import de.htw.berlin.portal.domain.User;
 import de.htw.berlin.portal.domain.service.AuthenticationException;
 import de.htw.berlin.portal.domain.service.UserService;
 import de.htw.berlin.portal.home.HomePage;
 import de.htw.berlin.portal.registration.RegistrationPage;
-import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.PasswordTextField;
@@ -24,7 +24,7 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
  *
  * 
  */
-public class LoginPage extends WebPage{
+public class LoginPage extends BasePage{
 
     @SpringBean
     UserService userService;
