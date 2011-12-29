@@ -5,6 +5,7 @@
 package de.htw.berlin.portal.login;
 
 import de.htw.berlin.portal.PortalSession;
+import de.htw.berlin.portal.auth.OnlyLoggedOut;
 import de.htw.berlin.portal.basepage.BasePage;
 import de.htw.berlin.portal.domain.User;
 import de.htw.berlin.portal.domain.service.AuthenticationException;
@@ -24,6 +25,7 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
  *
  * 
  */
+@OnlyLoggedOut
 public class LoginPage extends BasePage{
 
     @SpringBean
