@@ -5,6 +5,7 @@
 package de.htw.berlin.portal.registration;
 
 import de.htw.berlin.portal.PortalSession;
+import de.htw.berlin.portal.auth.OnlyLoggedOut;
 import de.htw.berlin.portal.basepage.BasePage;
 import de.htw.berlin.portal.domain.User;
 import de.htw.berlin.portal.domain.service.UserService;
@@ -21,6 +22,7 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
  *
  * 
  */
+@OnlyLoggedOut
 public class RegistrationPage extends BasePage{
     
     private static final Logger log = Logger.getLogger(RegistrationPage.class.getName());

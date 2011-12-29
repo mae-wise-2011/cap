@@ -6,6 +6,7 @@ package de.htw.berlin.portal.auth;
 
 import de.htw.berlin.portal.PortalSession;
 import de.htw.berlin.portal.domain.User;
+import de.htw.berlin.portal.home.HomePage;
 import de.htw.berlin.portal.login.LoginPage;
 import org.apache.wicket.Session;
 import org.apache.wicket.markup.html.WebPage;
@@ -54,7 +55,7 @@ public class PageAccessStrategyTest {
     }
     
     @Test
-    public void not_authenticated_user_redirected_to_loginpage(){
+    public void not_authenticated_user_redirected_to_loginpage_when_trying_to_access_restricted_page(){
         tester.startPage(RestrictedPage.class);
         tester.assertRenderedPage(LoginPage.class);
     }
@@ -64,6 +65,13 @@ public class PageAccessStrategyTest {
         authenticateUser();
         tester.startPage(RestrictedPage.class);
         tester.assertRenderedPage(RestrictedPage.class);
+    }
+    
+    @Test
+    public void authenticated_user_cant_access_logged_out_content(){
+        authenticateUser();
+        tester.startPage(OnlyLoggedOutPage.class);
+        tester.assertRenderedPage(HomePage.class);
     }
     
     private void authenticateUser(){
