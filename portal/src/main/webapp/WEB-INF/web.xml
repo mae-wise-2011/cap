@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+    <display-name>webapp</display-name>
+    <filter>
+        <filter-name>wicket.webapp</filter-name>
+        <filter-class>org.apache.wicket.protocol.http.WicketFilter</filter-class>
+        <init-param>
+            <param-name>applicationClassName</param-name>
+            <param-value>de.htw.berlin.portal.PortalApplication</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>wicket.webapp</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    <context-param>
+        <param-name>
+            context-configuration
+        </param-name>
+        <param-value>
+            /WEB-INF/applicationContext.xml
+        </param-value>
+    </context-param>
+    <listener>
+        <listener-class>
+            org.springframework.web.context.ContextLoaderListener
+        </listener-class>
+    </listener>
+    <listener>
+        <listener-class>de.htw.berlin.portal.servlet.HandleDerbyDBLifecycleWebListener</listener-class>
+    </listener>
+</web-app>

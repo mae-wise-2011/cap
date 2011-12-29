@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd">
+
+    <head>
+        <title>Cap Portal</title>
+    </head>
+    <body>
+        
+        <a href="#" wicket:id="link_registration">Noch keinen Account?</a><br/>
+        
+        <fieldset>
+            <legend>Login</legend>
+            <div wicket:id="login_feedback"/>
+            <form wicket:id="login_form">
+                <label for="name">Ihr Name</label>
+                <input id="name" wicket:id="login_name" type="text"/><br/>
+                <label for="password">Password</label>
+                <input type="password" wicket:id="login_password"/><br/>
+                <input type="submit" value="login" wicket:id="login_submit"/>
+            </form>
+        </fieldset>
+
+    
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd">
+
+    <head>
+        <title>Cap Portal</title>
+    </head>
+    <body>
+        
+    
+        <fieldset>
+            <legend>Registrierung</legend>
+            <div wicket:id="feedback"/>
+            <form wicket:id="registration_form">
+                <label for="name">Name</label>
+                <input type="text" wicket:id="name"/><br/>
+                <label for="password">Password</label>
+                <input type="password" wicket:id="password"/><br/>
+                <label for="password">Password (Widerholung)</label>
+                <input type="password" wicket:id="password_2"/><br/>
+                <input type="submit" wicket:id="submit"/>
+
+            </form>
+        </fieldset>
+    
+</body>
+</html>
