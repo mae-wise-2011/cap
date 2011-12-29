@@ -40,7 +40,20 @@ public class HandleDerbyDBLifecycleWebListener implements ServletContextListener
             log.info("Starting Derby..........");
             DriverManager.getConnection("jdbc:derby:portal;create=true");
         } catch (Exception e) {
-            throw new RuntimeException("Error Starting Derby", e);
+            boolean derbyWasAlreadyStarted = false;
+            Throwable cause = e;
+            while(cause != null && derbyWasAlreadyStarted == false){
+                cause = cause.getCause();
+                if(cause.getMessage().contains("ERROR XSDB6")){
+                    derbyWasAlreadyStarted = true;
+                }
+            }
+            if(derbyWasAlreadyStarted){
+                log.warning("Derby was already started by another Application");
+            }
+            else{
+               throw new RuntimeException("Error Starting Derby", e); 
+            }          
         }
     }
 }
