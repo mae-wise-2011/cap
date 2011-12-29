@@ -12,6 +12,14 @@
             <img src="${resource(dir:'images',file:'spinner.gif')}" alt="${message(code:'spinner.alt',default:'Loading...')}" />
         </div>
         <div id="grailsLogo"><a href="http://grails.org"><img src="${resource(dir:'images',file:'grails_logo.png')}" alt="Grails" border="0" /></a></div>
+        <g:if test="${session.user}">
+          <div>Benutzer: ${session.user?.firstName} ${session.user?.lastName}</div>
+          <div><g:link controller="user" action="logout">Logout</g:link></div>
+        </g:if>
+        <g:else>
+          <div><g:link controller="user" action="create">Register</g:link></div>
+          <div><g:link controller="login" action="index">Login</g:link></div>
+        </g:else>
         <g:layoutBody />
     </body>
 </html>
