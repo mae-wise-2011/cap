@@ -265,7 +265,7 @@
   </repositories>
   
   <build>
-	<sourceDirectory>grails-app</sourceDirectory>  
+	<sourceDirectory>grails-app/controllers</sourceDirectory>  
   
     <pluginManagement />
     

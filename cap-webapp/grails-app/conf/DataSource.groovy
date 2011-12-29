@@ -14,13 +14,14 @@ environments {
     development {
         dataSource {
             //dbCreate = "create-drop" // one of 'create', 'create-drop','update'
-            //url = "jdbc:hsqldb:mem:devDB"
+            url = "jdbc:hsqldb:mem:devDB"
+		driverClassName = "org.hsqldb.jdbcDriver"	
 		pooled = true
 		dbCreate = "create-drop"
-		url = "jdbc:mysql://se-labor-7.f4.htw-berlin.de:3306/cap_dev"
-		driverClassName = "com.mysql.jdbc.Driver"
-		username = "root"
-		password = "MAE_2011"
+		//url = "jdbc:mysql://se-labor-7.f4.htw-berlin.de:3306/cap_dev"
+		//driverClassName = "com.mysql.jdbc.Driver"
+		//username = "root"
+		//password = "MAE_2011"
         }
     }
     test {
