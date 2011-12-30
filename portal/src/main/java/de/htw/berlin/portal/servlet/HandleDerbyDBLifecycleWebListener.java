@@ -44,7 +44,7 @@ public class HandleDerbyDBLifecycleWebListener implements ServletContextListener
             Throwable cause = e.getCause();
             while(cause != null && derbyWasAlreadyStarted == false){
                 
-                if(cause.getMessage() != null && cause.getMessage().contains("ERROR XSDB6")){
+                if(cause.getMessage() != null && cause.getMessage().contains("Another instance of Derby may have already booted the database")){
                     derbyWasAlreadyStarted = true;
                 }
                 cause = cause.getCause();
