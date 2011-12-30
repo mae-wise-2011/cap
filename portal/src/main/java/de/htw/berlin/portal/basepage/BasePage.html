@@ -7,7 +7,12 @@
         <link rel="stylesheet" type="text/css" href="css/portal.css"/>
     </head>
     <body>
-        <div wicket:id="top_panel" class="toppanel" ></div>
-        <wicket:child/>
+        <div id="pagewrapper">
+            <div id="header">Konferenzsystem</div>
+            <div wicket:id="top_panel" class="toppanel" ></div>
+            <div id="content">
+                <wicket:child/>
+            </div>
+        </div>
     </body>
 </html>

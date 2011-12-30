@@ -1,6 +1,69 @@
+body {
+    font-family: Verdana,Arial,Helvetica,sans-serif;
+    font-size: 0.8em;
+}
+
+#pagewrapper {
+    margin: 0 auto;
+    text-align: left;
+    width: 1000px;
+}
+
+div#header {
+    background-image: url("../../img/logo.png");
+    background-position: 0 20px;
+    background-repeat: no-repeat;
+    color: #aaaaaa;
+    font-size: 40px;
+    height: 74px;
+    margin: 0;
+    padding: 0;
+    padding-top: 30px;
+    font-style: italic;
+    text-align: right;
+}
+
 .toppanel{
-    width: 100%; 
-    padding-top: 10px;
-    padding-bottom: 10px;
+    background-color: #76B900;
+    border-bottom: 1px solid #807F84;
+    border-top: 1px solid #FFFFFF;
+    clear: both;
+    color: #FFFFFF;
+    margin: 0;
+    
+}
+
+.toppanel a, .toppanel span{
+    color: #FFFFFF;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    padding: 5px;
+}
+
+.toppanel a:hover{
+    background-color: #bbdd7f;
+    color: #000;
+}
+
+fieldset{
+    padding: 10px;
+    display: inline-block;
+    margin-top: 20px;
+}
+
+fieldset.login{
+    width: 250px;
+}
+
+fieldset label{
+    display: inline-block;
+    width: 35%;
+}
+
+div#content{
+    border: 1px dashed #CCCCCC;
+    border-top: 0px;
+    padding: 0 10px 20px 10px;
 }
 

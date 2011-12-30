@@ -12,6 +12,7 @@ import de.htw.berlin.portal.domain.service.AuthenticationException;
 import de.htw.berlin.portal.domain.service.UserService;
 import de.htw.berlin.portal.home.HomePage;
 import de.htw.berlin.portal.registration.RegistrationPage;
+import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.PasswordTextField;
@@ -36,7 +37,6 @@ public class LoginPage extends BasePage{
     
     public LoginPage() {
         super();
-        addLinkToRegistrationPage();
         this.add(new FeedbackPanel("login_feedback"));
        
         TextField nameField = new TextField("login_name", new PropertyModel(this, "name"));
@@ -60,6 +60,9 @@ public class LoginPage extends BasePage{
                 .add(nameField)
                 .add(passwordField)
                 .add(loginButton);
+        
+        addLinkToRegistrationPage(loginForm);
+        
         this.add(loginForm);
         
         
@@ -67,8 +70,8 @@ public class LoginPage extends BasePage{
        
     }
 
-    private void addLinkToRegistrationPage() {
-        this.add(new Link("link_registration") {
+    private void addLinkToRegistrationPage(WebMarkupContainer parent) {
+        parent.add(new Link("link_registration") {
 
             @Override
             public void onClick() {
