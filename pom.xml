@@ -86,7 +86,7 @@
           <artifactId>tomcat-maven-plugin</artifactId>
           <version>1.2-SNAPSHOT</version>
           <configuration>
-          <server>myserver</server>
+          <server>tomcat</server>
         </configuration>
       </plugin>
       </plugins>
