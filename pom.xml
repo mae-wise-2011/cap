@@ -87,7 +87,7 @@
         <inherited>true</inherited>
         <configuration>
           <server>tomcat</server>
-          <url>http://localhost:8080/manager/text</url>
+          <url>http://localhost:8080/manager/html</url>
         </configuration>
       </plugin>
       </plugins>
