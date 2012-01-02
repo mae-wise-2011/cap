@@ -72,4 +72,24 @@ public class UserServiceTest {
         
         
     }
+    
+    @Test
+    public void testFindAllUsers(){
+        User user = new User();
+        user.setName("a");
+        user.setPassword("b");
+        userService.saveUser(user);
+        
+        user = new User();
+        user.setName("a");
+        user.setPassword("b");
+        userService.saveUser(user);
+        
+        //assertEquals("userService.findAll() should return 2 Users",2, userService.findAllUsers().size());
+        
+        //Erstmal ungefähr, weil die DB zwischen den Tests nicht gedroppt wird und somit bereits User
+        //in der DB sich befinden
+        assert userService.findAllUsers().size() > 2: "UserService.findAll should return mor than 2 Users";
+        
+    }
 }
