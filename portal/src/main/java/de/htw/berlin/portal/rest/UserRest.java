@@ -24,25 +24,29 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
-import org.apache.wicket.spring.injection.annot.SpringBean;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 /**
  *
  * @author Jan
  */
-@Path("/users")
+@Component
+@Scope("request")
+@Path("users")
 public class UserRest {
 
-    @SpringBean
+    @Autowired
     UserService userService;
 
-    @GET
-    @Produces(MediaType.TEXT_PLAIN)
+    @GET  
     public String sayHello() {
             return "Hello Jersey";
     }
 
     @GET
-    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    @Path("/list")
+    @Produces(MediaType.APPLICATION_JSON)
     public List<User> getUsers() {
             List<User> users = new ArrayList<User>();
             List<User> u = userService.findAllUsers();
@@ -50,11 +54,14 @@ public class UserRest {
             users.addAll(u );
             return users;
     }
-
-    @POST
+    @GET
+    @Path("/test")
     @Produces(MediaType.APPLICATION_JSON)
-    public String createUserREST(){
-        
-        return "";
+    public User test() {
+            List<User> users = new ArrayList<User>();
+            List<User> u = userService.findAllUsers();
+            System.out.println("Anzahl User:" + u.size());
+            users.addAll(u );
+            return u.get(0);
     }
 }

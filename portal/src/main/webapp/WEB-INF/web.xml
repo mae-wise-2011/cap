@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
     <display-name>CaP Portal</display-name>
+    
     <filter>
         <filter-name>wicket.webapp</filter-name>
         <filter-class>org.apache.wicket.protocol.http.WicketFilter</filter-class>
@@ -27,6 +28,20 @@
         </listener-class>
     </listener>
     <listener>
+        <listener-class>
+            org.springframework.web.context.request.RequestContextListener
+        </listener-class>
+    </listener>
+    <listener>
         <listener-class>de.htw.berlin.portal.servlet.HandleDerbyDBLifecycleWebListener</listener-class>
     </listener>
+    <servlet>
+        <description>The Spring Managed Jersey Servlet for RESTful Webservices</description>
+        <servlet-name>Rest</servlet-name>
+        <servlet-class>com.sun.jersey.spi.spring.container.servlet.SpringServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Rest</servlet-name>
+        <url-pattern>/rest/*</url-pattern>
+    </servlet-mapping>
 </web-app>
