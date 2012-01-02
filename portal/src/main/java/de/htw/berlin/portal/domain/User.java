@@ -21,13 +21,17 @@ import javax.persistence.Table;
 @Entity
 @Table(name="table_user",schema="portal")
 @NamedQueries({
-    @NamedQuery(name=User.FIND_USER_BY_NAME, query=User.FIND_USER_BY_NAME_QUERY)
+    @NamedQuery(name=User.FIND_USER_BY_NAME, query=User.FIND_USER_BY_NAME_QUERY),
+    @NamedQuery(name=User.FIND_ALL_USERS, query=User.FIND_ALL_USERS_QUERY)
 })
 public class User implements Serializable{
     
     protected static final String FIND_USER_BY_NAME_QUERY = "select u from User u where u.name = :name";
     public static final String FIND_USER_BY_NAME = "User.findUserByName";
     
+    protected static final String FIND_ALL_USERS_QUERY = "select u from User u";
+    public static final String FIND_ALL_USERS = "User.findAllUsers";
+
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;

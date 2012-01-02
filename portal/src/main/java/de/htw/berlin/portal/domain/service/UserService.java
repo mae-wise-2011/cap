@@ -47,4 +47,10 @@ public class UserService {
         }
         return user;
     }
+
+    public List<User> findAllUsers(){
+         List<User> result = em.createNamedQuery(User.FIND_ALL_USERS, User.class)
+                            .getResultList();
+         return result;
+    }
 }
