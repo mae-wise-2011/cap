@@ -64,8 +64,7 @@
   <dependencyManagement>
   </dependencyManagement>
   
-  <modules>
-    
+  <modules>  
     <module>portal</module>
   </modules>
 
