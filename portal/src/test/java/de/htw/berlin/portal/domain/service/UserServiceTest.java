@@ -36,6 +36,7 @@ public class UserServiceTest {
         User user = new User();
         user.setName("Test");
         user.setPassword("123456");
+        user.setEmail("testmail@test.de");
         userService.saveUser(user);
     }
     @Test
