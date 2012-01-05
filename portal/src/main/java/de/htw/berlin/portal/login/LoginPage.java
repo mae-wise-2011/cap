@@ -17,6 +17,7 @@ import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.PasswordTextField;
 import org.apache.wicket.markup.html.form.TextField;
+import org.apache.wicket.markup.html.link.BookmarkablePageLink;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.model.PropertyModel;
@@ -63,21 +64,11 @@ public class LoginPage extends BasePage{
         
         addLinkToRegistrationPage(loginForm);
         
-        this.add(loginForm);
-        
-        
-        
-       
+        this.add(loginForm);       
     }
 
-    private void addLinkToRegistrationPage(WebMarkupContainer parent) {
-        parent.add(new Link("link_registration") {
-
-            @Override
-            public void onClick() {
-                setResponsePage(RegistrationPage.class);
-            }
-        });
+    private void addLinkToRegistrationPage(WebMarkupContainer parent) {   
+        parent.add(new BookmarkablePageLink<RegistrationPage>("link_registration", RegistrationPage.class));
     }
     
     
