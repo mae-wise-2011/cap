@@ -24,6 +24,8 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import org.codehaus.jettison.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -39,7 +41,11 @@ public class UserRest {
     @Autowired
     UserService userService;
 
-    @GET  
+    /*********************************
+     ************ GET ***************
+     *********************************/
+
+    @GET
     public String sayHello() {
             return "Hello Jersey";
     }
@@ -54,6 +60,8 @@ public class UserRest {
             users.addAll(u );
             return users;
     }
+
+    /**
     @GET
     @Path("/test")
     @Produces(MediaType.APPLICATION_JSON)
@@ -63,5 +71,53 @@ public class UserRest {
             System.out.println("Anzahl User:" + u.size());
             users.addAll(u );
             return u.get(0);
+    }
+    */
+    
+    @GET
+    @Path("{username}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public User getUser(@PathParam("username") String username){
+
+        List<User> u = userService.getUsers(username);
+        if (u.isEmpty()){
+            throw new WebApplicationException(Response.Status.NOT_FOUND);
+        }
+        
+        return u.get(0);
+    }
+
+    /*********************************
+     ************ POST ***************
+     *********************************/
+
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public User addUser(User requestUserEntity) throws JSONException{
+        userService.saveUser(requestUserEntity);
+        return requestUserEntity;
+    }
+
+    /*********************************
+     ************ PUT ***************
+     *********************************/
+
+    @PUT
+    @Path("{username}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public User updateUser(User requestUserEntity, @PathParam("username") String username){
+
+        List<User> users = userService.getUsers(username);
+        if (users.isEmpty()){
+            throw new WebApplicationException(Response.Status.NOT_FOUND);
+        }
+
+        User u = users.get(0);
+        userService.mergeUser(u);
+
+        return u;
+        
     }
 }

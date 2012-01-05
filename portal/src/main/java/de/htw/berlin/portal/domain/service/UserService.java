@@ -33,6 +33,10 @@ public class UserService {
     public void saveUser(User u){
         em.persist(u);
     }
+
+    public void mergeUser(User u){
+        em.merge(u);
+    }
     
     public User authenticateUser(String name, String password) throws AuthenticationException{
         List<User> result = em.createNamedQuery(User.FIND_USER_BY_NAME, User.class)
@@ -52,5 +56,17 @@ public class UserService {
          List<User> result = em.createNamedQuery(User.FIND_ALL_USERS, User.class)
                             .getResultList();
          return result;
+    }
+
+    /**
+     * find a user by its name and return it
+     * @param name
+     * @return
+     */
+    public List<User> getUsers(String name){
+        List<User> result = em.createNamedQuery(User.FIND_USER_BY_NAME, User.class)
+                            .setParameter("name", name)
+                            .getResultList();
+        return result;
     }
 }
