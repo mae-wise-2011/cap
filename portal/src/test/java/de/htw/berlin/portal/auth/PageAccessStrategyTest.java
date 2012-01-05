@@ -74,6 +74,12 @@ public class PageAccessStrategyTest {
         tester.assertRenderedPage(HomePage.class);
     }
     
+    @Test
+    public void not_authenticated_user_can_access_logged_out_content(){
+        tester.startPage(OnlyLoggedOutPage.class);
+        tester.assertRenderedPage(OnlyLoggedOutPage.class);
+    }
+    
     private void authenticateUser(){
         ((PortalSession)tester.getSession()).associateSession(new User());
     }
