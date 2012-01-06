@@ -51,7 +51,7 @@ public class LoginPage extends BasePage{
                     PortalSession.get().associateSession(user);
                     setResponsePage(HomePage.class);
                 } catch (AuthenticationException ex) {
-                    error("Bitte Überprüfen Sie ihren Namen und Ihr Password");
+                    error("Bitte Überprüfen Sie Ihren Namen und Ihr Password");
                 }
             }
             
