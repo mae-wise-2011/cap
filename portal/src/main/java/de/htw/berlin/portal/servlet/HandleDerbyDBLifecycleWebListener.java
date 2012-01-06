@@ -38,6 +38,7 @@ public class HandleDerbyDBLifecycleWebListener implements ServletContextListener
     private void startDerby() throws RuntimeException {
         try {
             log.info("Starting Derby..........");
+            Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
             DriverManager.getConnection("jdbc:derby:portal;create=true");
         } catch (Exception e) {
             boolean derbyWasAlreadyStarted = false;
