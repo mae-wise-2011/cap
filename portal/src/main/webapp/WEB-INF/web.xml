@@ -16,10 +16,10 @@
     </filter-mapping>
     <context-param>
         <param-name>
-            context-configuration
+            contextConfigLocation
         </param-name>
         <param-value>
-            /WEB-INF/applicationContext.xml
+           classpath:spring/applicationContext.xml
         </param-value>
     </context-param>
     <listener>
