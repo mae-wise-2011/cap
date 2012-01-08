@@ -3,6 +3,8 @@
   <persistence-unit name="portalPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>de.htw.berlin.portal.domain.User</class>
+    <class>de.htw.berlin.portal.domain.GeoPosition</class>
+    <class>de.htw.berlin.portal.domain.Address</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
         <!-- Useless. because Spring will Configure: 

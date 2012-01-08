@@ -12,6 +12,7 @@ import de.htw.berlin.portal.domain.service.AuthenticationException;
 import de.htw.berlin.portal.domain.service.UserService;
 import de.htw.berlin.portal.home.HomePage;
 import de.htw.berlin.portal.registration.RegistrationPage;
+import de.htw.berlin.portal.util.CrypUtil;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.Form;
@@ -40,14 +41,14 @@ public class LoginPage extends BasePage{
         super();
         this.add(new FeedbackPanel("login_feedback"));
        
-        TextField nameField = new TextField("login_name", new PropertyModel(this, "name"));
-        TextField passwordField = new PasswordTextField("login_password", new PropertyModel(this, "password"));
+        TextField<String> nameField = new TextField<String>("login_name", new PropertyModel<String>(this, "name"));
+        TextField<String> passwordField = new PasswordTextField("login_password", new PropertyModel<String>(this, "password"));
         Button loginButton = new Button("login_submit"){
 
             @Override
             public void onSubmit() {
                 try {
-                    User user = userService.authenticateUser(name, password);
+                    User user = userService.authenticateUser(name, CrypUtil.getCryptedPassword( password ));
                     PortalSession.get().associateSession(user);
                     setResponsePage(HomePage.class);
                 } catch (AuthenticationException ex) {

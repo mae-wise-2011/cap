@@ -53,7 +53,7 @@ public class RegistrationPageTest {
         tester.startPage(page);
         
         enhanced.form("registration_form")
-                .setTextFieldValue("name", "test")
+                .setTextFieldValue("username", "test")
                 .setPasswordTextFieldValue("password", "123456")
                 .setPasswordTextFieldValue("password_2", "123456")
                 .submitWithButton("submit");
@@ -71,7 +71,7 @@ public class RegistrationPageTest {
         tester.startPage(page);
         
         enhanced.form("registration_form")
-                .setTextFieldValue("name", "test")
+                .setTextFieldValue("username", "test")
                 .setPasswordTextFieldValue("password", "123456")
                 .setPasswordTextFieldValue("password_2", "123456")
                 .submitWithButton("submit");
@@ -94,7 +94,7 @@ public class RegistrationPageTest {
         tester.startPage(page);
         
         enhanced.form("registration_form")
-                .setTextFieldValue("name", "test")
+                .setTextFieldValue("username", "test")
                 .setPasswordTextFieldValue("password", "123456")
                 .setPasswordTextFieldValue("password_2", "123456")
                 .submitWithButton("submit");
@@ -117,7 +117,7 @@ public class RegistrationPageTest {
         tester.startPage(page);
         
         enhanced.form("registration_form")
-                .setTextFieldValue("name", "test")
+                .setTextFieldValue("username", "test")
                 .setPasswordTextFieldValue("password", "123456")
                 .setPasswordTextFieldValue("password_2", "654321")
                 .submitWithButton("submit");
