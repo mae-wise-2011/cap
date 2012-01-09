@@ -62,20 +62,36 @@ public class ConferenceService {
     }
     
     /**
-     * find a conference by its id and return it
-     * @param name
+     * adds a given user to a conference by its id 
+     * @param id, user
      * @return
      */
-    public List<Conference> addUserToConference(Long id){
+    public void addUserToConference(Long id, User user){
         
         //TODO
         
         List<Conference> result = em.createNamedQuery(Conference.FIND_CONFERENCE_BY_ID, Conference.class)
                             .setParameter("id", id)
                             .getResultList();
-        return result;
+        
     }
     
+    
+    /**
+     * detects a conference by a searchString 
+     * @param search
+     * @return
+     */
+    public List<Conference> searchConference(String search){
+        
+        //TODO
+        List<Conference> result = null;
+       /* List<Conference> result = em.createNamedQuery(Conference.FIND_CONFERENCE_BY_ID, Conference.class)
+                            .setParameter("id", search)
+                            .getResultList(); */
+        return result;
+        
+    }
     
     
 }

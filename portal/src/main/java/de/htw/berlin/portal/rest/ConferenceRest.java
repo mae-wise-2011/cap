@@ -108,6 +108,17 @@ public class ConferenceRest {
         }
         return u;
     }
+    
+    @GET
+    @Path("/search")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Conference> searchConferences() {
+            List<Conference> conferences = new ArrayList<Conference>();
+            List<Conference> c = conferenceService.findAllConferences();
+            System.out.println("Anzahl Conferences:" + c.size());
+            conferences.addAll(c );
+            return conferences;
+    }
 
     /*********************************
      ************ POST ***************
@@ -127,7 +138,7 @@ public class ConferenceRest {
     @Produces(MediaType.APPLICATION_JSON)
     public void addUserToConference(@PathParam("id") Long id, User requestUserEntity) throws JSONException{
         userService.saveUser(requestUserEntity);
-        conferenceService.addUserToConference(id);
+        conferenceService.addUserToConference(id, requestUserEntity);
         throw new WebApplicationException(Response.Status.NO_CONTENT);
     }
 
