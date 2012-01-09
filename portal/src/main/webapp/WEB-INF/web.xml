@@ -32,9 +32,6 @@
             org.springframework.web.context.request.RequestContextListener
         </listener-class>
     </listener>
-    <listener>
-        <listener-class>de.htw.berlin.portal.servlet.HandleDerbyDBLifecycleWebListener</listener-class>
-    </listener>
     <servlet>
         <description>The Spring Managed Jersey Servlet for RESTful Webservices</description>
         <servlet-name>Rest</servlet-name>
