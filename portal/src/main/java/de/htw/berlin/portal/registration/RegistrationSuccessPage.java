@@ -18,6 +18,6 @@ public class RegistrationSuccessPage extends BasePage{
     
     public RegistrationSuccessPage(User u){
         super();
-        this.add(new Label("user",u.getName()));
+        this.add(new Label("user",u.getUsername()));
     }
 }

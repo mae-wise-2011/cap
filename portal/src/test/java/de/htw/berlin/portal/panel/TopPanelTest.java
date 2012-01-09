@@ -95,7 +95,7 @@ public class TopPanelTest {
     
     private void authenticateUser(){
         User u = new User();
-        u.setName("Test");
+        u.setUsername( "Test" );
         ((PortalSession)tester.getSession()).associateSession(u);
     }
 }

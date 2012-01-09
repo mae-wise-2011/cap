@@ -18,7 +18,7 @@ public final class HomePage extends BasePage {
 
     public HomePage() {
         super();
-        this.add(new Label("user_name",PortalSession.get().getUser().getName()));
+        this.add(new Label("user_name",PortalSession.get().getUser().getUsername()));
     }
     
 }

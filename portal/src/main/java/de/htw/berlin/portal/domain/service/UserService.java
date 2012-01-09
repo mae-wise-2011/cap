@@ -24,8 +24,8 @@ public class UserService {
     EntityManager em;
     
     public boolean doesUserAlreadyExists(String name){
-        return !em.createNamedQuery(User.FIND_USER_BY_NAME, User.class)
-                .setParameter("name", name)
+        return !em.createNamedQuery(User.FIND_USER_BY_USERNAME, User.class)
+                .setParameter("username", name)
                 .getResultList()
                 .isEmpty();
     }
@@ -39,8 +39,8 @@ public class UserService {
     }
     
     public User authenticateUser(String name, String password) throws AuthenticationException{
-        List<User> result = em.createNamedQuery(User.FIND_USER_BY_NAME, User.class)
-                            .setParameter("name", name)
+        List<User> result = em.createNamedQuery(User.FIND_USER_BY_USERNAME, User.class)
+                            .setParameter("username", name)
                             .getResultList();
         if(result.isEmpty()){
             throw new AuthenticationException();
@@ -64,8 +64,8 @@ public class UserService {
      * @return
      */
     public List<User> getUsers(String name){
-        List<User> result = em.createNamedQuery(User.FIND_USER_BY_NAME, User.class)
-                            .setParameter("name", name)
+        List<User> result = em.createNamedQuery(User.FIND_USER_BY_USERNAME, User.class)
+                            .setParameter("username", name)
                             .getResultList();
         return result;
     }

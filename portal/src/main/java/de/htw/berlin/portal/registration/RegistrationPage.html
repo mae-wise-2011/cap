@@ -8,19 +8,47 @@
     </head>
     <body>
         <wicket:extend>
-    
+
         <fieldset>
             <legend>Registrierung</legend>
             <div wicket:id="feedback"/>
-            <form wicket:id="registration_form">
-                <label for="name">Name</label>
-                <input type="text" wicket:id="name"/><br/>
+            <form id="RegisterForm" wicket:id="registration_form">
+              <label for="firstName">Vorname</label>
+              <input id="firstName" type="text" wicket:id="firstName"/><br/>
+
+              <label for="lastName">Nachname</label>
+              <input id="lastName" type="text" wicket:id="lastName"/><br/>
+
+              <label for="street">Straﬂe</label>
+              <input id="street" type="text" wicket:id="street"/><br/>
+
+              <label for="number">Hausnummer</label>
+              <input id="number" type="text" wicket:id="number"/><br/>
+
+              <label for="zip">PLZ</label>
+              <input id="zip" type="text" wicket:id="zip"/><br/>
+
+              <label for="city">Stadt</label>
+              <input id="city" type="text" wicket:id="city"/><br/>
+
+              <label for="country">Land</label>
+              <input id="country" type="text" wicket:id="country"/><br/>
+
+                <label for="username">Benutzername</label>
+                <input id="username" type="text" wicket:id="username"/><br/>
+
                 <label for="password">Password</label>
-                <input type="password" wicket:id="password"/><br/>
-                <label for="password">Password (Widerholung)</label>
-                <input type="password" wicket:id="password_2"/><br/>
+                <input id="password" type="password" wicket:id="password"/><br/>
+
+                <label for="password2">Password (Widerholung)</label>
+                <input id="password2" type="password" wicket:id="password_2"/><br/>
+
                 <br/>
                 <input type="submit" wicket:id="submit" id="submit_registration"/>
+
+
+              <input type="hidden" id="latitude" wicket:id="geo_latitude" />
+              <input type="hidden" id="longitude" wicket:id="geo_longitude" />
 
             </form>
         </fieldset>

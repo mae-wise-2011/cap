@@ -4,7 +4,9 @@
  */
 package de.htw.berlin.portal.domain.service;
 
+import de.htw.berlin.portal.domain.Address;
 import org.junit.After;
+import org.junit.Before;
 import org.springframework.beans.factory.annotation.Autowired;
 import de.htw.berlin.portal.domain.User;
 import java.sql.DriverManager;
@@ -24,7 +26,7 @@ public class UserServiceTest {
    
     @Autowired
     UserService userService;
-    
+
     @After
     public void clearDB() throws Exception{
         DriverManager.getConnection("jdbc:derby:memory:unittest;dropdb=true");
@@ -34,15 +36,26 @@ public class UserServiceTest {
     @Test
     public void user_can_be_persisted(){
         User user = new User();
-        user.setName("Test");
+      user.setFirstName( "Foo" );
+      user.setLastName( "Bar" );
+        user.setUsername( "Test" );
         user.setPassword("123456");
         user.setEmail("testmail@test.de");
+
+      Address address = new Address();
+      address.setStreet( "asdfgh" );
+      address.setNumber( "12" );
+      address.setZip( "12345" );
+      address.setCity( "Berlin" );
+      address.setCountry( "DE" );
+      
+      user.setAddress( address );
         userService.saveUser(user);
     }
     @Test
     public void test_user_does_already_exists(){
         User user = new User();
-        user.setName("Test");
+        user.setUsername( "Test" );
         user.setPassword("123456");
         userService.saveUser(user);      
         assertTrue("User already exists should return true", userService.doesUserAlreadyExists("Test"));
@@ -55,7 +68,7 @@ public class UserServiceTest {
     @Test(expected=AuthenticationException.class)
     public void test_wrong_password_leads_to_authentication_exception() throws Exception{
        User user = new User();
-        user.setName("Test");
+        user.setUsername( "Test" );
         user.setPassword("123456");
         userService.saveUser(user); 
         userService.authenticateUser("Test", "1234");
@@ -64,12 +77,12 @@ public class UserServiceTest {
     @Test
     public void test_correct_credentials_loads_user() throws Exception{
         User user = new User();
-        user.setName("Test");
+        user.setUsername( "Test" );
         user.setPassword("123456");
         userService.saveUser(user); 
         User userLoaded = userService.authenticateUser("Test", "123456");
         assertNotNull("User was not loaded, although he entered correct credentials",userLoaded);
-        assertEquals("Wrong User was loaded","Test", userLoaded.getName());
+        assertEquals("Wrong User was loaded","Test", userLoaded.getUsername());
         
         
     }
@@ -77,12 +90,12 @@ public class UserServiceTest {
     @Test
     public void testFindAllUsers(){
         User user = new User();
-        user.setName("a");
+        user.setUsername( "a" );
         user.setPassword("b");
         userService.saveUser(user);
         
         user = new User();
-        user.setName("a");
+        user.setUsername( "a" );
         user.setPassword("b");
         userService.saveUser(user);
         
@@ -90,7 +103,7 @@ public class UserServiceTest {
         
         //Erstmal ungefähr, weil die DB zwischen den Tests nicht gedroppt wird und somit bereits User
         //in der DB sich befinden
-        assert userService.findAllUsers().size() > 2: "UserService.findAll should return mor than 2 Users";
+        assert userService.findAllUsers().size() > 2: "UserService.findAll should return more than 2 Users";
         
     }
 }
