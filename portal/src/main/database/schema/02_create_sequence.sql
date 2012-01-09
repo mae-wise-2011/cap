@@ -1,0 +1,18 @@
+delimiter $$
+
+CREATE TABLE `table_user` (
+  `user_id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `user_email` varchar(255) DEFAULT NULL,
+  `firstName` varchar(255) DEFAULT NULL,
+  `lastName` varchar(255) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  `username` varchar(255) DEFAULT NULL,
+  `ADDRESS_ID` bigint(20) DEFAULT NULL,
+  `REGISTRATIONGEOPOSITION_ID` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`user_id`),
+  KEY `FK_table_user_ADDRESS_ID` (`ADDRESS_ID`),
+  KEY `FK_table_user_REGISTRATIONGEOPOSITION_ID` (`REGISTRATIONGEOPOSITION_ID`),
+  CONSTRAINT `FK_table_user_REGISTRATIONGEOPOSITION_ID` FOREIGN KEY (`REGISTRATIONGEOPOSITION_ID`) REFERENCES `table_geo_position` (`ID`),
+  CONSTRAINT `FK_table_user_ADDRESS_ID` FOREIGN KEY (`ADDRESS_ID`) REFERENCES `table_address` (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8$$
+
