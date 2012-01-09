@@ -20,7 +20,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name="table_user",schema="portal")
 @NamedQueries({
     @NamedQuery(name=User.FIND_USER_BY_USERNAME, query=User.FIND_USER_BY_NAME_QUERY),
-    @NamedQuery(name=User.FIND_ALL_USERS, query=User.FIND_ALL_USERS_QUERY)
+    @NamedQuery(name=User.FIND_ALL_USERS, query=User.FIND_ALL_USERS_QUERY) /*,
+    @NamedQuery(name=User.FIND_ALL_USERS_BY_CONFERENCE_ID, query=User.FIND_ALL_USERS_CONFERENCE_ID_QUERY)*/
 })
 public class User implements Serializable{
 
@@ -29,6 +30,12 @@ public class User implements Serializable{
 
     protected static final String FIND_ALL_USERS_QUERY = "select u from User u";
     public static final String FIND_ALL_USERS = "User.findAllUsers";
+    
+   /* protected static final String FIND_ALL_USERS_CONFERENCE_ID_QUERY = "select u from Conference c, User u, Conference_has_User chu"
+            + " where c.id=chu.cid and chu.uid=u.id";
+    public static final String FIND_ALL_USERS_BY_CONFERENCE_ID = "Conference.findAllUsersByConferenceId";*/
+
+
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)

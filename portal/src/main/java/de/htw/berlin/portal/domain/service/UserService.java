@@ -69,4 +69,17 @@ public class UserService {
                             .getResultList();
         return result;
     }
+    
+     /**
+     * find a conference by its id and return it
+     * @param name
+     * @return
+     */
+   /* public List<User> getUsersByConferenceId(Long id){
+        List<User> result = em.createNamedQuery(User.FIND_ALL_USERS_BY_CONFERENCE_ID, User.class)
+                            .setParameter("id", id)
+                            .getResultList();
+        return result;
+    } */
+
 }

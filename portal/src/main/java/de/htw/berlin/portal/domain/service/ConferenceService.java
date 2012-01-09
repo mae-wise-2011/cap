@@ -26,6 +26,14 @@ public class ConferenceService {
     public void createConference(Conference conference) {
         em.persist(conference);
     }
+    
+    public void saveConference(Conference c){
+        em.persist(c);
+    }
+
+    public void mergeConference(Conference c){
+        em.merge(c);
+    }
 
     public void inviteToConference(User invitor, User invited, Conference conference) {
     }
@@ -34,4 +42,40 @@ public class ConferenceService {
     
         return null;
     }
+    
+    public List<Conference> findAllConferences(){
+         List<Conference> result = em.createNamedQuery(Conference.FIND_ALL_CONFERENCES, Conference.class)
+                            .getResultList();
+         return result;
+    }
+
+    /**
+     * find a conference by its id and return it
+     * @param name
+     * @return
+     */
+    public List<Conference> getConference(Long id){
+        List<Conference> result = em.createNamedQuery(Conference.FIND_CONFERENCE_BY_ID, Conference.class)
+                            .setParameter("id", id)
+                            .getResultList();
+        return result;
+    }
+    
+    /**
+     * find a conference by its id and return it
+     * @param name
+     * @return
+     */
+    public List<Conference> addUserToConference(Long id){
+        
+        //TODO
+        
+        List<Conference> result = em.createNamedQuery(Conference.FIND_CONFERENCE_BY_ID, Conference.class)
+                            .setParameter("id", id)
+                            .getResultList();
+        return result;
+    }
+    
+    
+    
 }
