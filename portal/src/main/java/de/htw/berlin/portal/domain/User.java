@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
 @Entity
-@Table(name="table_user",schema="portal")
+@Table(name="table_user")
 @NamedQueries({
     @NamedQuery(name=User.FIND_USER_BY_NAME, query=User.FIND_USER_BY_NAME_QUERY),
     @NamedQuery(name=User.FIND_ALL_USERS, query=User.FIND_ALL_USERS_QUERY)
@@ -38,16 +38,17 @@ public class User implements Serializable{
     public static final String FIND_ALL_USERS = "User.findAllUsers";
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy= GenerationType.SEQUENCE)
+    @Column(name="user_id")
     private Long id;
     
-    @Column(name="u_name")
+    @Column(name="user_name")
     private String name;
     
-    @Column(name="u_password")
+    @Column(name="user_password")
     private String password;
 
-    @Column(name="u_email")
+    @Column(name="user_email")
     private String email;
 
     public String getName() {
