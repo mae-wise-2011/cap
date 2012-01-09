@@ -33,13 +33,13 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name="table_series",schema="portal")
 @NamedQueries({
-    @NamedQuery(name=Series.FIND_SERIES_BY_NAME_QUERY, query=Series.FIND_SERIES_BY_NAME),
+    @NamedQuery(name=Series.FIND_SERIES_BY_ID_QUERY, query=Series.FIND_SERIES_BY_ID),
     @NamedQuery(name=Series.FIND_ALL_SERIES_QUERY, query=Series.FIND_ALL_SERIES)
 })
 public class Series implements Serializable{
     
-    protected static final String FIND_SERIES_BY_NAME_QUERY = "select s from Series s where s.name = :name";
-    public static final String FIND_SERIES_BY_NAME = "Series.findSeriesByName";
+    protected static final String FIND_SERIES_BY_ID_QUERY = "select s from Series s where s.id = :i";
+    public static final String FIND_SERIES_BY_ID = "Series.findSeriesById";
     
     protected static final String FIND_ALL_SERIES_QUERY = "select s from Series s";
     public static final String FIND_ALL_SERIES = "Series.findAllSeries";

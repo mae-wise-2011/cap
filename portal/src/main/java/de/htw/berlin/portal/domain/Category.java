@@ -33,13 +33,13 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name="table_category",schema="portal")
 @NamedQueries({
-    @NamedQuery(name=Category.FIND_CATEGORY_BY_NAME_QUERY, query=Category.FIND_CATEGORY_BY_NAME),
+    @NamedQuery(name=Category.FIND_CATEGORY_BY_ID_QUERY, query=Category.FIND_CATEGORY_BY_ID),
     @NamedQuery(name=Category.FIND_ALL_CATEGORIES_QUERY, query=Category.FIND_ALL_CATEGORIES)
 })
 public class Category implements Serializable{
     
-    protected static final String FIND_CATEGORY_BY_NAME_QUERY = "select cat from Category cat where cat.name = :name";
-    public static final String FIND_CATEGORY_BY_NAME = "Category.findCategoryByName";
+    protected static final String FIND_CATEGORY_BY_ID_QUERY = "select cat from Category cat where cat.id = :id";
+    public static final String FIND_CATEGORY_BY_ID = "Category.findCategoryById";
     
     protected static final String FIND_ALL_CATEGORIES_QUERY = "select cat from Category cat";
     public static final String FIND_ALL_CATEGORIES = "Category.findAllCategories";
