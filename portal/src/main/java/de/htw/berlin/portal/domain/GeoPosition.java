@@ -9,7 +9,7 @@ import java.util.Date;
  * @since 08.01.12, 17:35
  */
 @Entity
-@Table( name = "table_geo_position", schema = "portal" )
+@Table( name = "table_geo_position")
 public class GeoPosition implements Serializable {
 
   @Id

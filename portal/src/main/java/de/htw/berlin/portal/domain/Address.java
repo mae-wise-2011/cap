@@ -8,26 +8,26 @@ import java.io.Serializable;
  * @since 08.01.12, 17:07
  */
 @Entity
-@Table( name = "table_address", schema = "portal" )
+@Table( name = "table_address")
 public class Address implements Serializable {
 
   @Id
   @GeneratedValue( strategy = GenerationType.AUTO )
   private Long id;
 
-  @Column(name = "a_street")
+  @Column(name = "street")
   private String street;
 
-  @Column(name = "a_number")
+  @Column(name = "number")
   private String number;
 
-  @Column(name = "a_city")
+  @Column(name = "city")
   private String city;
 
-  @Column(name = "a_zip")
+  @Column(name = "zip")
   private String zip;
 
-  @Column(name = "a_country")
+  @Column(name = "country")
   private String country;
 
 
