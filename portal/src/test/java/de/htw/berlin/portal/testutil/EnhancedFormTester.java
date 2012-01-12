@@ -48,6 +48,10 @@ public class EnhancedFormTester {
         formTester.setValue(path, value);
         return new EnhancedFormTester(tester, formTester, formPath);
     }
+    
+    public EnhancedFormTester setHiddenField(String path, String value){
+        return setValue(path, value, HiddenField.class);
+    }
 
     public EnhancedFormTester selectDropDownChoice(String path, int index) {
         return select(path, index, DropDownChoice.class);

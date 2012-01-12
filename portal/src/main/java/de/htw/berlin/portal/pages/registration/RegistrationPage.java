@@ -97,6 +97,7 @@ public class RegistrationPage extends BasePage{
                   geo.setTimestamp( new Date() );
                   geo.setLatitude( new Double( geo_latitude ) );
                   geo.setLongitude( new Double( geo_longitude ) );
+                  u.setRegistrationGeoPosition(geo);
                 }
 
                 userService.saveUser(u);

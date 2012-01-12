@@ -4,6 +4,7 @@
  */
 package de.htw.berlin.portal.testutil;
 
+import de.htw.berlin.portal.PortalSession;
 import java.io.Serializable;
 import java.util.List;
 import static junit.framework.Assert.*;
@@ -61,6 +62,10 @@ public class EnhancedWicketTester {
                 "expected error message, but there weren't any",
                 messages.isEmpty());
 
+    }
+    
+    public PortalSession getSession(){
+        return (PortalSession) tester.getSession();
     }
 }
 
