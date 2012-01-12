@@ -5,8 +5,8 @@
 package de.htw.berlin.portal.auth;
 
 import de.htw.berlin.portal.PortalSession;
-import de.htw.berlin.portal.home.HomePage;
-import de.htw.berlin.portal.login.LoginPage;
+import de.htw.berlin.portal.pages.home.HomePage;
+import de.htw.berlin.portal.pages.login.LoginPage;
 import org.apache.wicket.Component;
 import org.apache.wicket.RestartResponseAtInterceptPageException;
 import org.apache.wicket.RestartResponseException;

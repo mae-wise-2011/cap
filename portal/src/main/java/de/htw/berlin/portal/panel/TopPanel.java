@@ -16,8 +16,8 @@
 package de.htw.berlin.portal.panel;
 
 import de.htw.berlin.portal.PortalSession;
-import de.htw.berlin.portal.login.LoginPage;
-import de.htw.berlin.portal.registration.RegistrationPage;
+import de.htw.berlin.portal.pages.login.LoginPage;
+import de.htw.berlin.portal.pages.registration.RegistrationPage;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.panel.Panel;

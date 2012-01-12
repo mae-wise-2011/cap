@@ -2,11 +2,11 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package de.htw.berlin.portal.registration;
+package de.htw.berlin.portal.pages.registration;
 
 import de.htw.berlin.portal.PortalSession;
 import de.htw.berlin.portal.auth.OnlyLoggedOut;
-import de.htw.berlin.portal.basepage.BasePage;
+import de.htw.berlin.portal.pages.BasePage;
 import de.htw.berlin.portal.domain.Address;
 import de.htw.berlin.portal.domain.GeoPosition;
 import de.htw.berlin.portal.domain.User;

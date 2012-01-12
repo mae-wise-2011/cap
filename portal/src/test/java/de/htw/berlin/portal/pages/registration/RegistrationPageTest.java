@@ -2,8 +2,10 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package de.htw.berlin.portal.registration;
+package de.htw.berlin.portal.pages.registration;
 
+import de.htw.berlin.portal.pages.registration.RegistrationSuccessPage;
+import de.htw.berlin.portal.pages.registration.RegistrationPage;
 import de.htw.berlin.portal.testutil.EnhancedWicketTester;
 import de.htw.berlin.portal.PortalSession;
 import de.htw.berlin.portal.domain.service.UserService;

@@ -2,13 +2,14 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package de.htw.berlin.portal.login;
+package de.htw.berlin.portal.pages.login;
 
+import de.htw.berlin.portal.pages.login.LoginPage;
 import de.htw.berlin.portal.PortalSession;
 import de.htw.berlin.portal.domain.User;
 import de.htw.berlin.portal.domain.service.AuthenticationException;
 import de.htw.berlin.portal.domain.service.UserService;
-import de.htw.berlin.portal.home.HomePage;
+import de.htw.berlin.portal.pages.home.HomePage;
 import de.htw.berlin.portal.testutil.EnhancedWicketTester;
 import org.apache.wicket.Session;
 import org.apache.wicket.mock.MockApplication;

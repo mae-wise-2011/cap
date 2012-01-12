@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package de.htw.berlin.portal.basepage;
+package de.htw.berlin.portal.pages;
 
 import de.htw.berlin.portal.panel.TopPanel;
 import org.apache.wicket.markup.html.WebPage;

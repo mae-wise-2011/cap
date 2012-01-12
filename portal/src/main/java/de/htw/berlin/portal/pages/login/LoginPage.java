@@ -2,16 +2,16 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package de.htw.berlin.portal.login;
+package de.htw.berlin.portal.pages.login;
 
 import de.htw.berlin.portal.PortalSession;
 import de.htw.berlin.portal.auth.OnlyLoggedOut;
-import de.htw.berlin.portal.basepage.BasePage;
+import de.htw.berlin.portal.pages.BasePage;
 import de.htw.berlin.portal.domain.User;
 import de.htw.berlin.portal.domain.service.AuthenticationException;
 import de.htw.berlin.portal.domain.service.UserService;
-import de.htw.berlin.portal.home.HomePage;
-import de.htw.berlin.portal.registration.RegistrationPage;
+import de.htw.berlin.portal.pages.home.HomePage;
+import de.htw.berlin.portal.pages.registration.RegistrationPage;
 import de.htw.berlin.portal.util.CrypUtil;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.form.Button;

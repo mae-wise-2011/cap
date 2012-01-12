@@ -2,10 +2,10 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package de.htw.berlin.portal.registration;
+package de.htw.berlin.portal.pages.registration;
 
 import de.htw.berlin.portal.auth.Restricted;
-import de.htw.berlin.portal.basepage.BasePage;
+import de.htw.berlin.portal.pages.BasePage;
 import de.htw.berlin.portal.domain.User;
 import org.apache.wicket.markup.html.basic.Label;
 

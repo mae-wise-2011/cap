@@ -5,9 +5,9 @@
 package de.htw.berlin.portal;
 
 import de.htw.berlin.portal.auth.RestrictedPageAccessStrategy;
-import de.htw.berlin.portal.home.HomePage;
-import de.htw.berlin.portal.login.LoginPage;
-import de.htw.berlin.portal.registration.RegistrationPage;
+import de.htw.berlin.portal.pages.home.HomePage;
+import de.htw.berlin.portal.pages.login.LoginPage;
+import de.htw.berlin.portal.pages.registration.RegistrationPage;
 import org.apache.wicket.Page;
 import org.apache.wicket.Session;
 import org.apache.wicket.protocol.http.WebApplication;
