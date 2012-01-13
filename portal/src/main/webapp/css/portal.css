@@ -53,12 +53,17 @@ fieldset{
 }
 
 fieldset.login{
-    width: 250px;
+    width: 300px;
+}
+
+#RegisterForm{
+    width: 500px;
 }
 
 fieldset label{
     display: inline-block;
-    width: 35%;
+    width: 40%;
+    padding: 5px;
 }
 
 div#content{
@@ -67,3 +72,27 @@ div#content{
     padding: 0 10px 20px 10px;
 }
 
+a{
+    color: #0083CC;
+    text-decoration: underline;
+}
+
+input.button{
+    margin: 10px;
+    padding: 5px;
+}
+
+ul.feedbackPanel{
+    background: none repeat scroll 0 0 #FFF3F3;
+    border: 1px solid red;
+    color: #CC0000;
+    margin: 10px 0 5px;
+    padding: 5px 0;
+    list-style: none outside none;
+}
+
+ul.feedbackPanel li{
+    background: url("../img/red_info.png") no-repeat scroll 8px 0 transparent;
+    line-height: 16px;
+    padding-left: 30px;   
+}
