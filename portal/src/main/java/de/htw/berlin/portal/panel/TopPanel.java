@@ -17,6 +17,7 @@ package de.htw.berlin.portal.panel;
 
 import de.htw.berlin.portal.PortalSession;
 import de.htw.berlin.portal.pages.login.LoginPage;
+import de.htw.berlin.portal.pages.profile.UserProfile;
 import de.htw.berlin.portal.pages.registration.RegistrationPage;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.Link;
@@ -61,6 +62,13 @@ public final class TopPanel extends Panel {
             }
         }.setVisible(PortalSession.get().isAuthenticated()));
 
+      
+        this.add( new Link("link_user_profile") {
 
+          @Override
+          public void onClick() {
+            setResponsePage(new UserProfile( PortalSession.get().getUser() ));
+          }
+        }.setVisible( PortalSession.get().isAuthenticated()));
     }
 }

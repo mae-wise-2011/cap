@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd">
+
+    <head>
+        <title>Cap Portal</title>
+    </head>
+    <body>
+        <wicket:extend>
+
+          <fieldset>
+            <legend>Benutzerprofil</legend>
+            <div wicket:id="feedback"/>
+            <form id="UserForm" wicket:id="user_form">
+
+              <label for="username">Benutzername</label>
+              <input id="username" type="text" wicket:id="username"/><br/>
+
+              <label for="firstName">Vorname</label>
+              <input id="firstName" type="text" wicket:id="firstName"/><br/>
+
+              <label for="lastName">Nachname</label>
+              <input id="lastName" type="text" wicket:id="lastName"/><br/>
+
+              <label for="email">E-Mail</label>
+              <input id="email" type="text" wicket:id="email"/><br/>
+
+              <br/>
+              <input class="button" value="Speichern" type="submit" wicket:id="submit" id="submit_profile"/>
+            </form>
+          </fieldset>
+
+        </wicket:extend>
+</body>
+</html>

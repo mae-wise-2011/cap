@@ -15,6 +15,7 @@
  */
 package de.htw.berlin.portal.panel;
 
+import de.htw.berlin.portal.pages.profile.UserProfile;
 import de.htw.berlin.portal.pages.registration.RegistrationPage;
 import de.htw.berlin.portal.pages.login.LoginPage;
 import de.htw.berlin.portal.PortalSession;
@@ -71,12 +72,27 @@ public class TopPanelTest {
         tester.assertInvisible("link_registration");
     }
     @Test
+    public void test_when_authenticated_user_profile_link_is_shown(){
+      authenticateUser();
+      tester.startPanel(TopPanel.class);
+      tester.assertVisible("link_user_profile");
+      tester.assertInvisible("link_login");
+      tester.assertInvisible("link_registration");
+    }
+    @Test
     public void test_logout_link_logs_out(){
         authenticateUser();
         tester.startPanel(TopPanel.class);
         tester.clickLink("link_logout");
         assertFalse("User is still authenticated",((PortalSession)tester.getSession()).isAuthenticated() );
         tester.assertRenderedPage(LoginPage.class);
+    }
+    @Test
+    public void test_user_profile_link_go_to_user_profile(){
+      authenticateUser();
+      tester.startPanel( TopPanel.class );
+      tester.clickLink( "link_user_profile" );
+      tester.assertRenderedPage(UserProfile.class);
     }
     @Test
     public void test_unauthenticated_user_has_link_to_loginpage(){
@@ -96,6 +112,8 @@ public class TopPanelTest {
     private void authenticateUser(){
         User u = new User();
         u.setUsername( "Test" );
+        u.setFirstName( "Foo" );
+        u.setLastName( "Bar" );
         ((PortalSession)tester.getSession()).associateSession(u);
     }
 }

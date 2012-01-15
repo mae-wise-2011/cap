@@ -42,6 +42,7 @@ public class RegistrationPage extends BasePage{
     private String city = "";
     private String country = "";
     private String username = "";
+    private String email = "";
     private String password = "";
     private String passwordRepeat = "";
     
@@ -57,6 +58,7 @@ public class RegistrationPage extends BasePage{
         final TextField<String> cityField = createInputField( "city" );
         final TextField<String> countryField = createInputField( "country" );
         final TextField<String> usernameField = createInputField("username");
+        final TextField<String> emailField = createInputField("email");
         final PasswordTextField passwordField = new PasswordTextField("password",new PropertyModel<String>(this, "password"));
         final PasswordTextField password2 = new PasswordTextField("password_2",new PropertyModel<String>(this, "passwordRepeat"));
       
@@ -81,6 +83,7 @@ public class RegistrationPage extends BasePage{
                 u.setFirstName( firstName );
                 u.setLastName( lastName );
                 u.setUsername( username );
+                u.setEmail( email );
                 u.setPassword( CrypUtil.getCryptedPassword( password ));
 
                 Address defaultAddress = new Address();
@@ -108,26 +111,13 @@ public class RegistrationPage extends BasePage{
         };
         
         Form<User> form = new Form<User>("registration_form");
-        form.add( firstNameField );
-        form.add( lastNameField );
-        form.add( streetField );
-        form.add( numberField );
-        form.add( zipField );
-        form.add( cityField );
-        form.add( countryField );
-        form.add(usernameField);
-        form.add(passwordField);
-        form.add(password2);
-        form.add(submit);
-        form.add( geoLatitudeField );
-        form.add( geoLongitudeField );
-        this.add(form);
-        this.add(new FeedbackPanel("feedback"));
-        
+        form.add( firstNameField, lastNameField, streetField, numberField, zipField, cityField, countryField, usernameField, emailField, passwordField, password2, submit, geoLatitudeField, geoLongitudeField );
+        this.add(form, new FeedbackPanel("feedback"));
+
     }
     
     private TextField<String> createInputField( final String name ) {
-      return  new TextField<String>(name, new PropertyModel<String>(this, name));
+      return new TextField<String>(name, new PropertyModel<String>(this, name));
     }
     
 }
