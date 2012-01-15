@@ -7,15 +7,7 @@ package de.htw.berlin.portal.domain;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
+import javax.persistence.*;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -27,7 +19,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
 @Entity
-@Table(name="table_conference",schema="portal")
+@Table(name="table_conferences")
 @NamedQueries({
     @NamedQuery(name=Conference.FIND_CONFERENCE_BY_ID, query=Conference.FIND_CONFERENCE_BY_ID_QUERY),
     @NamedQuery(name=Conference.FIND_ALL_CONFERENCES, query=Conference.FIND_ALL_CONFERENCES_QUERY)
@@ -64,9 +56,9 @@ public class Conference implements Serializable{
     
     @Column(name="c_location")
     private String location;
-    
-    @Column(name="c_gps")
-    private String gps;
+
+    @OneToOne( fetch = FetchType.EAGER, cascade = CascadeType.ALL, optional = true )
+    private GeoPosition geoPosition;
     
     @Column(name="c_venue")
     private String venue;
@@ -76,9 +68,16 @@ public class Conference implements Serializable{
     
     @Column(name="c_howtofind")
     private String howtofind;
-    
-    
+
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    private User creatingUser;
+
+    @OneToMany( fetch = FetchType.EAGER, cascade = CascadeType.ALL )
     private List<Category> categories;
+
+    @Column(name = "c_timestamp")
+    @Temporal( TemporalType.TIMESTAMP )
+    private Date timestamp;
 
     public String getVersion() {
         return version;
@@ -136,15 +135,15 @@ public class Conference implements Serializable{
         this.description = description;
     }
 
-    public String getGps() {
-        return gps;
+    public GeoPosition getGeoPosition() {
+      return geoPosition;
     }
 
-    public void setGps(String gps) {
-        this.gps = gps;
+    public void setGeoPosition( final GeoPosition geoPosition ) {
+      this.geoPosition = geoPosition;
     }
 
-    public String getHowtofind() {
+  public String getHowtofind() {
         return howtofind;
     }
 
@@ -167,6 +166,20 @@ public class Conference implements Serializable{
     public void setVenue(String venue) {
         this.venue = venue;
     }
-    
-    
+
+  public User getCreatingUser() {
+    return creatingUser;
+  }
+
+  public void setCreatingUser( final User creatingUser ) {
+    this.creatingUser = creatingUser;
+  }
+
+  public Date getTimestamp() {
+    return timestamp;
+  }
+
+  public void setTimestamp( final Date timestamp ) {
+    this.timestamp = timestamp;
+  }
 }

@@ -16,6 +16,7 @@
 package de.htw.berlin.portal.panel;
 
 import de.htw.berlin.portal.PortalSession;
+import de.htw.berlin.portal.pages.conference.CreateConference;
 import de.htw.berlin.portal.pages.login.LoginPage;
 import de.htw.berlin.portal.pages.profile.UserProfile;
 import de.htw.berlin.portal.pages.registration.RegistrationPage;
@@ -70,5 +71,15 @@ public final class TopPanel extends Panel {
             setResponsePage(new UserProfile( PortalSession.get().getUser() ));
           }
         }.setVisible( PortalSession.get().isAuthenticated()));
+
+        this.add( new Link("link_create_conference") {
+
+          @Override
+          public void onClick() {
+            setResponsePage( CreateConference.class );
+          }
+        }.setVisible( PortalSession.get().isAuthenticated()));
+
+
     }
 }

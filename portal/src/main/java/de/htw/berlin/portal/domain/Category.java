@@ -16,14 +16,8 @@
 package de.htw.berlin.portal.domain;
 
 import java.io.Serializable;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
+import java.util.List;
+import javax.persistence.*;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -31,10 +25,10 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
 @Entity
-@Table(name="table_category",schema="portal")
+@Table(name="table_categories")
 @NamedQueries({
-    @NamedQuery(name=Category.FIND_CATEGORY_BY_ID_QUERY, query=Category.FIND_CATEGORY_BY_ID),
-    @NamedQuery(name=Category.FIND_ALL_CATEGORIES_QUERY, query=Category.FIND_ALL_CATEGORIES)
+    @NamedQuery(query=Category.FIND_CATEGORY_BY_ID_QUERY, name=Category.FIND_CATEGORY_BY_ID),
+    @NamedQuery(query=Category.FIND_ALL_CATEGORIES_QUERY, name=Category.FIND_ALL_CATEGORIES)
 })
 public class Category implements Serializable{
     
@@ -50,11 +44,7 @@ public class Category implements Serializable{
     
     @Column(name="cat_name")
     private String name;
-    
-    @Column(name="cat_parent")
-    private Category parent;
-    
-    private Category[] subcategories;
+
 
     public String getName() {
         return name;
@@ -64,20 +54,4 @@ public class Category implements Serializable{
         this.name = name;
     }
 
-    public Category getParent() {
-        return parent;
-    }
-
-    public void setParent(Category parent) {
-        this.parent = parent;
-    }
-
-    public Category[] getSubcategories() {
-        return subcategories;
-    }
-
-    public void setSubcategories(Category[] subcategories) {
-        this.subcategories = subcategories;
-    }
-    
 }
