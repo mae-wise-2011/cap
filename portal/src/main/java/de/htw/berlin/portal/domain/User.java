@@ -39,7 +39,7 @@ public class User implements Serializable{
 
     @Id
     @GeneratedValue(strategy= GenerationType.SEQUENCE)
-    @Column(name="user_id")
+    @Column(name="ID")
     private Long id;
 
     @Column(name="firstName")

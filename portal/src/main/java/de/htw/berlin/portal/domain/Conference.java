@@ -35,38 +35,39 @@ public class Conference implements Serializable{
     
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
+    @Column(name="ID")
     private Long id;
     
-    @Column(name="c_version")
+    @Column(name="version")
     private String version;
     
-    @Column(name="c_name")
+    @Column(name="name")
     private String name;
     
-    @Column(name="c_startdate")
+    @Column(name="startdate")
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date startDate;
     
-    @Column(name="c_enddate")
+    @Column(name="enddate")
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date endDate;
     
-    @Column(name="c_description")
+    @Column(name="description")
     private String description;
     
-    @Column(name="c_location")
+    @Column(name="location")
     private String location;
 
     @OneToOne( fetch = FetchType.EAGER, cascade = CascadeType.ALL, optional = true )
     private GeoPosition geoPosition;
     
-    @Column(name="c_venue")
+    @Column(name="venue")
     private String venue;
     
-    @Column(name="c_accomodation")
+    @Column(name="accomodation")
     private String accomodation;
     
-    @Column(name="c_howtofind")
+    @Column(name="howtofind")
     private String howtofind;
 
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
@@ -75,7 +76,7 @@ public class Conference implements Serializable{
     @OneToMany( fetch = FetchType.EAGER, cascade = CascadeType.ALL )
     private List<Category> categories;
 
-    @Column(name = "c_timestamp")
+    @Column(name = "timestamp")
     @Temporal( TemporalType.TIMESTAMP )
     private Date timestamp;
 

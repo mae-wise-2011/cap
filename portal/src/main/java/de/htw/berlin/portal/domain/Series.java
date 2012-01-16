@@ -46,9 +46,10 @@ public class Series implements Serializable{
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
+    @Column(name="ID")
     private Long id;
     
-    @Column(name="s_name")
+    @Column(name="name")
     private String name;
     
     private User[] members;

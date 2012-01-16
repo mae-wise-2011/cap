@@ -13,6 +13,7 @@ public class Address implements Serializable {
 
   @Id
   @GeneratedValue( strategy = GenerationType.AUTO )
+  @Column(name="ID")
   private Long id;
 
   @Column(name = "street")

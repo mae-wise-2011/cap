@@ -40,9 +40,10 @@ public class Category implements Serializable{
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
+    @Column(name="ID")
     private Long id;
     
-    @Column(name="cat_name")
+    @Column(name="name")
     private String name;
 
 
