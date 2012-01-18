@@ -54,16 +54,16 @@ public class SeriesRest {
             return "Hello Jersey";
     }
 
-    @GET
+   /* @GET
     @Path("/list")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Series> getCategories() {
             List<Series> series = new ArrayList<Series>();
-            List<Series> c = seriesService.findAllSeries();
+            List<Series> c = seriesService.findAllSeriess();
             System.out.println("Anzahl Series:" + c.size());
             series.addAll(c );
             return series;
-    }
+    }*/
 
     /**
     @GET
