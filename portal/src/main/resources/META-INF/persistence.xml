@@ -7,7 +7,7 @@
     <class>de.htw.berlin.portal.domain.Address</class>
     <class>de.htw.berlin.portal.domain.Category</class>
     <class>de.htw.berlin.portal.domain.Conference</class>
-	<class>de.htw.berlin.portal.domain.Series</class>
+	
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
         <!-- Useless. because Spring will Configure: 
