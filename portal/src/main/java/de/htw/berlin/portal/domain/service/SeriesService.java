@@ -4,8 +4,6 @@
  */
 package de.htw.berlin.portal.domain.service;
 
-import de.htw.berlin.portal.domain.Category;
-import de.htw.berlin.portal.domain.Conference;
 import de.htw.berlin.portal.domain.Series;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -24,24 +22,21 @@ public class SeriesService {
     @PersistenceContext(unitName = "portalPU")
     EntityManager em;
 
-    public void createSeries(Series conference) {
-        em.persist(conference);
-    }
-    
-    public void saveSeries(Series c){
-        em.persist(c);
+       
+    public void saveSeries(Series s){
+        em.persist(s);
     }
 
-    public void mergeSeries(Series c){
-        em.merge(c);
+    public void mergeSeries(Series s){
+        em.merge(s);
     }
 
     
-    public List<Series> findAllSeries(){
+   /* public List<Series> findAllSeriess(){
          List<Series> result = em.createNamedQuery(Series.FIND_ALL_SERIES, Series.class)
                             .getResultList();
          return result;
-    }
+    } */
 
     /**
      * find a conference by its id and return it
