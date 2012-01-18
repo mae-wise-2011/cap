@@ -29,7 +29,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name="table_series")
 @NamedQueries({
-    @NamedQuery(name=Series.FIND_SERIES_BY_ID_QUERY, query=Series.FIND_SERIES_BY_ID),
+    @NamedQuery(name=Series.FIND_SERIES_BY_ID_QUERY, query=Series.FIND_SERIES_BY_ID)
   /*  @NamedQuery(name=Series.FIND_ALL_SERIES_QUERY, query=Series.FIND_ALL_SERIES) */
 })
 public class Series implements Serializable{
