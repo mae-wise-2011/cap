@@ -24,28 +24,24 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement
-@XmlAccessorType(XmlAccessType.FIELD)
+
 @Entity
-@Table(name="table_series",schema="portal")
+@Table(name="table_series")
 @NamedQueries({
     @NamedQuery(name=Series.FIND_SERIES_BY_ID_QUERY, query=Series.FIND_SERIES_BY_ID),
-    @NamedQuery(name=Series.FIND_ALL_SERIES_QUERY, query=Series.FIND_ALL_SERIES)
+  /*  @NamedQuery(name=Series.FIND_ALL_SERIES_QUERY, query=Series.FIND_ALL_SERIES) */
 })
 public class Series implements Serializable{
     
-    protected static final String FIND_SERIES_BY_ID_QUERY = "select s from Series s where s.id = :i";
+    protected static final String FIND_SERIES_BY_ID_QUERY = "select s from table_series s where s.id = :id";
     public static final String FIND_SERIES_BY_ID = "Series.findSeriesById";
     
-    protected static final String FIND_ALL_SERIES_QUERY = "select s from Series s";
-    public static final String FIND_ALL_SERIES = "Series.findAllSeries";
-
+  /*  protected static final String FIND_ALL_SERIES_QUERY = "select s from table_series s";
+    public static final String FIND_ALL_SERIES = "Series.findAllSeriess";
+*/
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(name="ID")
     private Long id;
     
