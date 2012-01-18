@@ -15,6 +15,10 @@
  */
 package de.htw.berlin.portal.domain.service;
 
+import de.htw.berlin.portal.domain.User;
+import de.htw.berlin.portal.domain.Series;
+import de.htw.berlin.portal.domain.service.SeriesService;
+import java.util.ArrayList;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,8 +38,43 @@ public class SeriesServiceTest {
     SeriesService seriesService;
     
     @Test
-    public void test_something(){
-        assertNotNull(seriesService);
+    public void test_persistSeries(){
+        Series series = new Series();
+        series.setName("TestSeries");
+        User[] members = new User[4];
+        for (int i= 0; i < 4; i++){
+            User u = new User();
+            u.setUsername("TestU" +i);
+            u.setPassword("PassU" +i);
+            u.setFirstName("TestFirstU" +i);
+            u.setLastName("TestLastU" +i);
+            members[i] = u;
+        }
+        series.setMember(members);
+        seriesService.saveSeries(series);
     }
+    
+   /* @Test
+    public void test_getAllSeries(){
+        for (int j = 0; j < 6; j++){
+            Series series = new Series();
+            series.setName("TestSeries" + j);
+            User[] members = new User[4];
+            for (int i= 0; i < 4; i++){
+                User u = new User();
+                u.setUsername("TestU" +i);
+                u.setPassword("PassU" +i);
+                u.setFirstName("TestFirstU" +i);
+                u.setLastName("TestLastU" +i);
+                members[i] = u;
+            }
+            series.setMember(members);
+            seriesService.saveSeries(series);
+        }
+        seriesService.findAllSeriess();
+    }*/
+    
+    
+    
     
 }
