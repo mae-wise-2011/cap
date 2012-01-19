@@ -31,21 +31,15 @@ public class User implements Serializable{
     protected static final String FIND_ALL_USERS_QUERY = "select u from User u";
     public static final String FIND_ALL_USERS = "User.findAllUsers";
     
-   /* protected static final String FIND_ALL_USERS_CONFERENCE_ID_QUERY = "select u from Conference c, User u, Conference_has_User chu"
-            + " where c.id=chu.cid and chu.uid=u.id";
-    public static final String FIND_ALL_USERS_BY_CONFERENCE_ID = "Conference.findAllUsersByConferenceId";*/
-
-
-
     @Id
-    @GeneratedValue(strategy= GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="ID")
     private Long id;
 
-    @Column(name="firstName")
+    @Column(name="firstname")
     private String firstName;
 
-    @Column(name="lastName")
+    @Column(name="lastname")
     private String lastName;
   
     @Column(name="username")
@@ -54,10 +48,11 @@ public class User implements Serializable{
     @Column(name="password")
     private String password;
 
-    @Column(name="user_email")
+    @Column(name="email")
     private String email;
 
     @OneToOne( fetch = FetchType.EAGER, cascade = CascadeType.ALL, optional = false)
+    @JoinColumn(name="ADRESS_ID")
     private Address address;
 
     @OneToOne( fetch = FetchType.EAGER, cascade = CascadeType.ALL, optional = true )

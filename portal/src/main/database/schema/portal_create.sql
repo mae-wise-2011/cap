@@ -38,7 +38,7 @@ CREATE  TABLE IF NOT EXISTS `portal`.`table_user` (
   `ID` INT NOT NULL AUTO_INCREMENT ,
   `version` VARCHAR(45) NULL ,
   `username` VARCHAR(45) NOT NULL ,
-  `password` VARCHAR(45) NULL ,
+  `password` VARCHAR(255) NULL ,
   `firstname` VARCHAR(45) NULL ,
   `lastname` VARCHAR(45) NULL ,
   `email` VARCHAR(45) NULL ,

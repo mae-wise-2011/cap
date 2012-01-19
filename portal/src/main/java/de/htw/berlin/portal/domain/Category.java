@@ -39,7 +39,7 @@ public class Category implements Serializable{
     public static final String FIND_ALL_CATEGORIES = "Category.findAllCategories";
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="ID")
     private Long id;
     
