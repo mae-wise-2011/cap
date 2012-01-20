@@ -8,7 +8,7 @@ import java.io.Serializable;
  * @since 08.01.12, 17:07
  */
 @Entity
-@Table( name = "table_address")
+@Table( name = "table_adress")
 public class Address implements Serializable {
 
   @Id

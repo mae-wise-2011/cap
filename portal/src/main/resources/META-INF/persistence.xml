@@ -7,16 +7,16 @@
     <class>de.htw.berlin.portal.domain.Address</class>
     <class>de.htw.berlin.portal.domain.Category</class>
     <class>de.htw.berlin.portal.domain.Conference</class>
-	<class>de.htw.berlin.portal.domain.Series</class>
+    <class>de.htw.berlin.portal.domain.Series</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
-        <!-- Useless. because Spring will Configure: 
+      <!-- Useless. because Spring will Configure: 
       <property name="javax.persistence.jdbc.url" value="jdbc:derby:portal"/>
       <property name="javax.persistence.jdbc.password" value="app"/>
       <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.EmbeddedDriver"/>
       <property name="javax.persistence.jdbc.user" value="app"/>-->
-      <property name="eclipselink.ddl-generation" value="drop-and-create-tables"/>
       <property name="eclipselink.weaving" value="static"/>
+      <property name="eclipselink.ddl-generation" value="create-tables"/>
     </properties>
   </persistence-unit>
 </persistence>

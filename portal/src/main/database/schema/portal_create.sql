@@ -23,7 +23,7 @@ ENGINE = InnoDB;
 -- Table `portal`.`table_geo_position`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `portal`.`table_geo_position` (
-  `ID` INT NOT NULL ,
+  `ID` INT NOT NULL AUTO_INCREMENT,
   `gp_latitude` DOUBLE NOT NULL ,
   `gp_longitude` DOUBLE NOT NULL ,
   `gp_timestamp` DATETIME NULL ,
@@ -45,20 +45,8 @@ CREATE  TABLE IF NOT EXISTS `portal`.`table_user` (
   `status` VARCHAR(45) NULL ,
   `ADRESS_ID` INT NULL ,
   `REGISTRATIONGEOPOSITION_ID` INT NULL ,
-  PRIMARY KEY (`ID`) ,
-  UNIQUE INDEX `username_UNIQUE` (`username` ASC) ,
-  INDEX `fk_table_user_table_adress` (`ADRESS_ID` ASC) ,
-  INDEX `fk_table_user_table_geo_position1` (`REGISTRATIONGEOPOSITION_ID` ASC) ,
-  CONSTRAINT `fk_table_user_table_adress`
-    FOREIGN KEY (`ADRESS_ID` )
-    REFERENCES `portal`.`table_adress` (`ID` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_table_user_table_geo_position1`
-    FOREIGN KEY (`REGISTRATIONGEOPOSITION_ID` )
-    REFERENCES `portal`.`table_geo_position` (`ID` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  PRIMARY KEY (`ID`) 
+  )
 ENGINE = InnoDB;
 
 
