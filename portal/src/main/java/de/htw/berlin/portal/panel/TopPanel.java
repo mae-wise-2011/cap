@@ -33,7 +33,7 @@ public final class TopPanel extends Panel {
     public TopPanel(String id) {
         super(id);
         if (PortalSession.get().isAuthenticated()) {
-            this.add(new Label("username", PortalSession.get().getUser().getUsername()));
+            this.add(new Label("username", "Angemeldet als: " + PortalSession.get().getUser().getUsername()));
         } else {
             this.add(new Label("username", ""));
         }

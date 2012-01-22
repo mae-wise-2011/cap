@@ -11,54 +11,60 @@
           <div wicket:id="feedback"/>
           <form id="ConferenceForm" wicket:id="conference_form">
             <h2>Neue Konferenz</h2>
-          <fieldset>
-            <legend>Allgemeine Pflichtinformationen</legend>
+            <table class="twocolumns">
+                <tr>
+                    <td>
+                      <fieldset>
+                        <legend>Allgemeine Pflichtinformationen</legend>
 
-              <label for="name">Name</label>
-              <input id="name" type="text" wicket:id="name"/><br/>
+                          <label for="name">Name</label>
+                          <input id="name" type="text" wicket:id="name"/><br/>
 
-              <label for="startDate">Startdatum</label>
-              <input id="startDate" type="text" wicket:id="startDate"/><br/>
+                          <label for="startDate">Startdatum</label>
+                          <input id="startDate" type="text" wicket:id="startDate"/><br/>
 
-              <label for="endDate">Enddatum</label>
-              <input id="endDate" type="text" wicket:id="endDate"/><br/>
+                          <label for="endDate">Enddatum</label>
+                          <input id="endDate" type="text" wicket:id="endDate"/><br/>
 
-              <label for="description">Beschreibung</label>
-              <input id="description" type="text" wicket:id="description"/><br/>
+                          <label for="description">Beschreibung</label>
+                          <input id="description" type="text" wicket:id="description"/><br/>
 
-              <label for="location">Ort</label>
-              <input id="location" type="text" wicket:id="location"/><br/>
+                          <label for="location">Ort</label>
+                          <input id="location" type="text" wicket:id="location"/><br/>
 
-              <br/>
-            </fieldset>
-            <fieldset>
-              <legend>Geo-Position</legend>
+                          <br/>
+                        </fieldset> 
+                        <fieldset>
+                          <legend>Kategorien</legend>
+                          <label for="category">Kategorie hinzuf&uuml;gen</label>
+                          <input id="category" type="text" wicket:id="category"/><br/>
+                        </fieldset>
+                    </td>
+                    <td>
+                        <fieldset>
+                          <legend>Geo-Position</legend>
 
-              <label for="latitude">Latitude</label>
-              <input id="latitude" type="text" wicket:id="latitude"/><br/>
+                          <label for="latitude">Latitude</label>
+                          <input id="latitude" type="text" wicket:id="latitude"/><br/>
 
-              <label for="longitude">Longitude</label>
-              <input id="longitude" type="text" wicket:id="longitude"/><br/>
-            </fieldset>
+                          <label for="longitude">Longitude</label>
+                          <input id="longitude" type="text" wicket:id="longitude"/><br/>
+                        </fieldset> 
+                        <fieldset>
+                          <legend>Weitere Informationen</legend>
 
-            <fieldset>
-              <legend>Kategorien</legend>
-              <label for="category">Kategorie hinzufügen</label>
-              <input id="category" type="text" wicket:id="category"/><br/>
-            </fieldset>
+                          <label for="venue">Infos zum Ort</label>
+                          <textarea id="venue" wicket:id="venue"></textarea><br/>
 
-            <fieldset>
-              <legend>Weitere Informationen</legend>
+                          <label for="accomodation">Infos zur Unterkunft</label>
+                          <textarea id="accomodation" wicket:id="accomodation"></textarea><br/>
 
-              <label for="venue">Infos zum Ort</label>
-              <textarea id="venue" wicket:id="venue"></textarea><br/>
-
-              <label for="accomodation">Infos zur Unterkunft</label>
-              <textarea id="accomodation" wicket:id="accomodation"></textarea><br/>
-
-              <label for="howtofind">Kann so gefunden werden</label>
-              <textarea id="howtofind" wicket:id="howtofind"></textarea><br/>
-            </fieldset>
+                          <label for="howtofind">Kann so gefunden werden</label>
+                          <textarea id="howtofind" wicket:id="howtofind"></textarea><br/>
+                        </fieldset>
+                    </td>
+                </tr>
+            </table>
 
             <input class="button" value="Speichern" type="submit" wicket:id="submit" id="submit_conference"/>
           </form>

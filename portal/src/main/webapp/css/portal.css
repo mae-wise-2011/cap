@@ -48,7 +48,6 @@ div#header {
 
 fieldset{
     padding: 10px;
-    display: inline-block;
     margin-top: 20px;
 }
 
@@ -69,7 +68,7 @@ fieldset label{
 div#content{
     border: 1px dashed #CCCCCC;
     border-top: 0px;
-    padding: 0 10px 20px 10px;
+    padding: 5px 10px 20px 10px;
 }
 
 a{
@@ -95,4 +94,12 @@ ul.feedbackPanel li{
     background: url("../img/red_info.png") no-repeat scroll 8px 0 transparent;
     line-height: 16px;
     padding-left: 30px;   
+}
+
+table.twocolumns{
+    width: 100%;
+}
+
+table.twocolumns td{
+    vertical-align: top;
 }
