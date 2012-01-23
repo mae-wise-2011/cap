@@ -99,7 +99,7 @@ public class CreateConference extends BasePage {
             //        }} ;
             //        conference.setCategories( catList );
 
-                    conferenceService.createConference( conference );
+                    conferenceService.saveConference( conference );
                     setResponsePage( HomePage.class );
                 } catch (ParseException ex) {
                     Logger.getLogger(CreateConference.class.getName()).log(Level.SEVERE, null, ex);
