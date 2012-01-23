@@ -19,7 +19,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
 @Entity
-@Table(name="table_conferences")
+@Table(name="table_conference")
 @NamedQueries({
     @NamedQuery(name=Conference.FIND_CONFERENCE_BY_ID, query=Conference.FIND_CONFERENCE_BY_ID_QUERY),
     @NamedQuery(name=Conference.FIND_ALL_CONFERENCES, query=Conference.FIND_ALL_CONFERENCES_QUERY)
@@ -58,6 +58,7 @@ public class Conference implements Serializable{
     @Column(name="location")
     private String location;
 
+    @JoinColumn(name="GPS_ID")
     @OneToOne( fetch = FetchType.EAGER, cascade = CascadeType.ALL, optional = true )
     private GeoPosition geoPosition;
     
@@ -70,15 +71,16 @@ public class Conference implements Serializable{
     @Column(name="howtofind")
     private String howtofind;
 
+    @JoinColumn(name="CREATOR_ID")
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     private User creatingUser;
 
     @OneToMany( fetch = FetchType.EAGER, cascade = CascadeType.ALL )
     private List<Category> categories;
 
-    @Column(name = "timestamp")
-    @Temporal( TemporalType.TIMESTAMP )
-    private Date timestamp;
+//    @Column(name = "timestamp")
+//    @Temporal( TemporalType.TIMESTAMP )
+//    private Date timestamp;
 
     public String getVersion() {
         return version;
@@ -176,11 +178,11 @@ public class Conference implements Serializable{
     this.creatingUser = creatingUser;
   }
 
-  public Date getTimestamp() {
-    return timestamp;
-  }
+//  public Date getTimestamp() {
+//    return timestamp;
+//  }
 
-  public void setTimestamp( final Date timestamp ) {
-    this.timestamp = timestamp;
-  }
+//  public void setTimestamp( final Date timestamp ) {
+//    this.timestamp = timestamp;
+//  }
 }

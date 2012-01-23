@@ -14,6 +14,7 @@ public class GeoPosition implements Serializable {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name="ID")
   private Long id;
 
   @Column( name = "gp_latitude" )

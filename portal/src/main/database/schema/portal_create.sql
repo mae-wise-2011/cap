@@ -2,13 +2,14 @@ SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL';
 
+DROP SCHEMA IF EXISTS `portal` ;
 CREATE SCHEMA IF NOT EXISTS `portal` ;
 USE `portal` ;
 
 -- -----------------------------------------------------
--- Table `portal`.`table_adress`
+-- Table `portal`.`table_address`
 -- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS `portal`.`table_adress` (
+CREATE  TABLE IF NOT EXISTS `portal`.`table_address` (
   `ID` INT NOT NULL AUTO_INCREMENT ,
   `city` VARCHAR(45) NULL ,
   `country` VARCHAR(45) NULL ,
@@ -23,7 +24,7 @@ ENGINE = InnoDB;
 -- Table `portal`.`table_geo_position`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `portal`.`table_geo_position` (
-  `ID` INT NOT NULL AUTO_INCREMENT,
+  `ID` INT NOT NULL AUTO_INCREMENT ,
   `gp_latitude` DOUBLE NOT NULL ,
   `gp_longitude` DOUBLE NOT NULL ,
   `gp_timestamp` DATETIME NULL ,
@@ -38,15 +39,27 @@ CREATE  TABLE IF NOT EXISTS `portal`.`table_user` (
   `ID` INT NOT NULL AUTO_INCREMENT ,
   `version` VARCHAR(45) NULL ,
   `username` VARCHAR(45) NOT NULL ,
-  `password` VARCHAR(255) NULL ,
+  `password` VARCHAR(256) NULL ,
   `firstname` VARCHAR(45) NULL ,
   `lastname` VARCHAR(45) NULL ,
   `email` VARCHAR(45) NULL ,
   `status` VARCHAR(45) NULL ,
   `ADRESS_ID` INT NULL ,
   `REGISTRATIONGEOPOSITION_ID` INT NULL ,
-  PRIMARY KEY (`ID`) 
-  )
+  PRIMARY KEY (`ID`) ,
+  UNIQUE INDEX `username_UNIQUE` (`username` ASC) ,
+  INDEX `fk_table_user_table_adress` (`ADRESS_ID` ASC) ,
+  INDEX `fk_table_user_table_geo_position1` (`REGISTRATIONGEOPOSITION_ID` ASC) ,
+  CONSTRAINT `fk_table_user_table_adress`
+    FOREIGN KEY (`ADRESS_ID` )
+    REFERENCES `portal`.`table_address` (`ID` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_table_user_table_geo_position1`
+    FOREIGN KEY (`REGISTRATIONGEOPOSITION_ID` )
+    REFERENCES `portal`.`table_geo_position` (`ID` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
@@ -67,19 +80,21 @@ ENGINE = InnoDB;
 CREATE  TABLE IF NOT EXISTS `portal`.`table_conference` (
   `ID` INT NOT NULL AUTO_INCREMENT ,
   `version` VARCHAR(45) NULL ,
-  `name` VARCHAR(45) NOT NULL ,
+  `name` VARCHAR(256) NOT NULL ,
   `startdate` DATE NOT NULL ,
   `enddate` DATE NOT NULL ,
-  `description` VARCHAR(45) NULL ,
-  `location` VARCHAR(45) NULL ,
-  `venue` VARCHAR(45) NULL ,
-  `accomodation` VARCHAR(45) NULL ,
+  `description` TEXT NULL ,
+  `location` TEXT NULL ,
+  `venue` TEXT NULL ,
+  `accomodation` TEXT NULL ,
   `howtofind` VARCHAR(45) NULL ,
   `CREATOR_ID` INT NULL ,
   `SERIES_ID` INT NULL ,
+  `GPS_ID` INT NULL ,
   PRIMARY KEY (`ID`) ,
   INDEX `fk_table_conference_table_user1` (`CREATOR_ID` ASC) ,
   INDEX `fk_table_conference_table_series1` (`SERIES_ID` ASC) ,
+  INDEX `fk_table_conference_table_geo_position1` (`GPS_ID` ASC) ,
   CONSTRAINT `fk_table_conference_table_user1`
     FOREIGN KEY (`CREATOR_ID` )
     REFERENCES `portal`.`table_user` (`ID` )
@@ -88,6 +103,11 @@ CREATE  TABLE IF NOT EXISTS `portal`.`table_conference` (
   CONSTRAINT `fk_table_conference_table_series1`
     FOREIGN KEY (`SERIES_ID` )
     REFERENCES `portal`.`table_series` (`ID` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_table_conference_table_geo_position1`
+    FOREIGN KEY (`GPS_ID` )
+    REFERENCES `portal`.`table_geo_position` (`ID` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;

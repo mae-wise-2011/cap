@@ -56,6 +56,7 @@ public class User implements Serializable{
     private Address address;
 
     @OneToOne( fetch = FetchType.EAGER, cascade = CascadeType.ALL, optional = true )
+    @JoinColumn(name="REGISTRATIONGEOPOSITION_ID")
     private GeoPosition registrationGeoPosition;
 
   public String getFirstName() {
