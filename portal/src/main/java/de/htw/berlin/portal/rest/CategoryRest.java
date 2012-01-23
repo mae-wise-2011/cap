@@ -19,11 +19,7 @@ package de.htw.berlin.portal.rest;
 
 
 import de.htw.berlin.portal.domain.Category;
-import de.htw.berlin.portal.domain.Conference;
-import de.htw.berlin.portal.domain.User;
 import de.htw.berlin.portal.domain.service.CategoryService;
-import de.htw.berlin.portal.domain.service.ConferenceService;
-import de.htw.berlin.portal.domain.service.UserService;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ws.rs.*;

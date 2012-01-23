@@ -15,16 +15,13 @@
  */
 package de.htw.berlin.portal.domain.service;
 
+import de.htw.berlin.portal.domain.Serie;
 import de.htw.berlin.portal.domain.User;
-import de.htw.berlin.portal.domain.Series;
-import de.htw.berlin.portal.domain.service.SeriesService;
-import java.util.ArrayList;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import static org.junit.Assert.*;
 
 /**
  *
@@ -37,9 +34,12 @@ public class SeriesServiceTest {
     @Autowired
     SeriesService seriesService;
     
+    @Autowired
+    UserService userService;
+    
     @Test
     public void test_persistSeries(){
-        Series series = new Series();
+        Serie series = new Serie();
         series.setName("TestSeries");
         User[] members = new User[4];
         for (int i= 0; i < 4; i++){
@@ -49,15 +49,16 @@ public class SeriesServiceTest {
             u.setFirstName("TestFirstU" +i);
             u.setLastName("TestLastU" +i);
             members[i] = u;
+            userService.saveUser(u);
         }
-        series.setMember(members);
+        series.setMembers(members);
         seriesService.saveSeries(series);
     }
     
-   /* @Test
+    @Test
     public void test_getAllSeries(){
         for (int j = 0; j < 6; j++){
-            Series series = new Series();
+            Serie series = new Serie();
             series.setName("TestSeries" + j);
             User[] members = new User[4];
             for (int i= 0; i < 4; i++){
@@ -67,12 +68,13 @@ public class SeriesServiceTest {
                 u.setFirstName("TestFirstU" +i);
                 u.setLastName("TestLastU" +i);
                 members[i] = u;
+                userService.saveUser(u);
             }
-            series.setMember(members);
+            series.setMembers(members);
             seriesService.saveSeries(series);
         }
-        seriesService.findAllSeriess();
-    }*/
+        assert seriesService.findAllSeriess().size() >= 5 : "seriesService.findAllSeries: There should exist more than 4 series";
+    }
     
     
     

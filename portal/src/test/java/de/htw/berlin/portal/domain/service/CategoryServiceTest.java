@@ -15,6 +15,7 @@
  */
 package de.htw.berlin.portal.domain.service;
 
+import de.htw.berlin.portal.domain.Category;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,9 +35,25 @@ public class CategoryServiceTest {
     CategoryService categoryService;
     
     @Test
-    public void test_something(){
-        assertNotNull(categoryService);
+    public void test_persist_category(){
+        Category cat = new Category();
+        cat.setName("TestCat");
+        categoryService.saveCategory(cat);
     }
+    
+    @Test
+    public void testFindAllCategories(){
+        Category cat = new Category();
+        cat.setName("TestCat");
+        categoryService.saveCategory(cat);
+         cat = new Category();
+        cat.setName("TestCat B");
+        categoryService.saveCategory(cat);
+        
+        assert categoryService.findAllCategories().size() >= 2 : "categoryService.findAll(): Shold exist more or equal 2 categories";
+    }
+    
+    
     
     
     

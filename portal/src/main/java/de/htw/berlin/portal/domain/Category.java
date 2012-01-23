@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
 @Entity
-@Table(name="table_categories")
+@Table(name="table_category")
 @NamedQueries({
     @NamedQuery(query=Category.FIND_CATEGORY_BY_ID_QUERY, name=Category.FIND_CATEGORY_BY_ID),
     @NamedQuery(query=Category.FIND_ALL_CATEGORIES_QUERY, name=Category.FIND_ALL_CATEGORIES)

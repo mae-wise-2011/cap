@@ -97,13 +97,22 @@ public class UserServiceTest {
         user = new User();
         user.setUsername( "a" );
         user.setPassword("b");
+       
+        Address address = new Address();
+      address.setStreet( "asdfgh" );
+      address.setNumber( "12" );
+      address.setZip( "12345" );
+      address.setCity( "Berlin" );
+      address.setCountry( "DE" );
+        user.setAddress(address);
+        System.out.println(user);
         userService.saveUser(user);
         
         //assertEquals("userService.findAll() should return 2 Users",2, userService.findAllUsers().size());
         
         //Erstmal ungefähr, weil die DB zwischen den Tests nicht gedroppt wird und somit bereits User
         //in der DB sich befinden
-        assert userService.findAllUsers().size() > 2: "UserService.findAll should return more than 2 Users";
+        assert userService.findAllUsers().size() >= 2: "UserService.findAll should return more than 2 Users";
         
     }
 }

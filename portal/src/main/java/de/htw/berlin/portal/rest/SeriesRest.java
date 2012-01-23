@@ -20,7 +20,7 @@ package de.htw.berlin.portal.rest;
 
 import de.htw.berlin.portal.domain.Category;
 
-import de.htw.berlin.portal.domain.Series;
+import de.htw.berlin.portal.domain.Serie;
 import de.htw.berlin.portal.domain.service.CategoryService;
 import de.htw.berlin.portal.domain.service.SeriesService;
 import java.util.ArrayList;
@@ -81,9 +81,9 @@ public class SeriesRest {
     @GET
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Series getSeries(@PathParam("id") Long id){
+    public Serie getSeries(@PathParam("id") Long id){
 
-        List<Series> c = seriesService.getSeries(id);
+        List<Serie> c = seriesService.getSerie(id);
         if (c.isEmpty()){
             throw new WebApplicationException(Response.Status.NOT_FOUND);
         }
@@ -99,7 +99,7 @@ public class SeriesRest {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Series addConference(Series requestSeriesEntity) throws JSONException{
+    public Serie addConference(Serie requestSeriesEntity) throws JSONException{
         seriesService.saveSeries(requestSeriesEntity);
         return requestSeriesEntity;
     }

@@ -15,6 +15,12 @@
  */
 package de.htw.berlin.portal.domain.service;
 
+import de.htw.berlin.portal.domain.GeoPosition;
+import de.htw.berlin.portal.domain.User;
+import java.util.Date;
+import de.htw.berlin.portal.domain.Conference;
+import java.sql.DriverManager;
+import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,9 +39,152 @@ public class ConferenceServiceTest {
     @Autowired
     ConferenceService conferenceService;
     
+    @Autowired
+    UserService userService;
+    
+    @After
+    public void clearDB() throws Exception{
+        DriverManager.getConnection("jdbc:derby:memory:unittest;dropdb=true");
+        DriverManager.getConnection("jdbc:derby:memory:unittest;create=true");
+    }
+    
     @Test
-    public void test_something(){
-        assertNotNull(conferenceService);
+    public void conference_can_be_persisted(){
+        Conference conference = new Conference();
+        
+        conference.setName("TestConference");
+        conference.setStartDate(new Date());
+        conference.setEndDate(new Date());
+        conference.setDescription("Das hier ist ein Test!");
+        conference.setLocation("TestSaal");
+               
+        User user = new User();
+        user.setFirstName( "Foo" );
+        user.setLastName( "Bar" );
+        user.setUsername( "Test" );
+        user.setPassword("123456");
+        user.setEmail("testmail@test.de");
+        
+        userService.saveUser(user);
+        conference.setCreatingUser(user);
+                    
+        GeoPosition geo = new GeoPosition();
+        geo.setTimestamp( new Date() );
+        geo.setLatitude( new Double( 2.2 ) );
+        geo.setLongitude( new Double( 17.2 ) );
+        
+        conference.setGeoPosition(geo);
+                    
+        conference.setAccomodation("good");
+        conference.setVenue("Test");
+        conference.setHowtofind("easy");
+
+        conferenceService.saveConference( conference );
+    }
+    
+    @Test
+    public void conference_can_be_merged(){
+        Conference conference = new Conference();
+        
+        conference.setName("TestConference");
+        conference.setStartDate(new Date());
+        conference.setEndDate(new Date());
+        conference.setDescription("Das hier ist ein Test!");
+        conference.setLocation("TestSaal");
+               
+        User user = new User();
+        user.setFirstName( "Foo" );
+        user.setLastName( "Bar" );
+        user.setUsername( "Test" );
+        user.setPassword("123456");
+        user.setEmail("testmail@test.de");
+        
+        userService.saveUser(user);
+        conference.setCreatingUser(user);
+                    
+        GeoPosition geo = new GeoPosition();
+        geo.setTimestamp( new Date() );
+        geo.setLatitude( new Double( 2.2 ) );
+        geo.setLongitude( new Double( 17.2 ) );
+        
+        conference.setGeoPosition(geo);
+                    
+        conference.setAccomodation("good");
+        conference.setVenue("Test");
+        conference.setHowtofind("easy");
+
+        conferenceService.saveConference( conference );
+        
+        conference.setDescription("Other Description");
+        System.out.println(conference.getDescription());
+        conferenceService.mergeConference(conference);
+        System.out.println(conferenceService.getConference(3L).get(0).getDescription());
+        assert conferenceService.getConference(3L).get(0).getDescription().equals("Other Description") : "ConferenceService.merge(): The decription should be merged";
+            
+    }
+    
+    @Test
+    public void testFindAllConferences(){
+        Conference conference = new Conference();
+        
+        conference.setName("TestConference");
+        conference.setStartDate(new Date());
+        conference.setEndDate(new Date());
+        conference.setDescription("Das hier ist ein Test!");
+        conference.setLocation("TestSaal");
+               
+        User user = new User();
+        user.setFirstName( "Foo" );
+        user.setLastName( "Bar" );
+        user.setUsername( "Test" );
+        user.setPassword("123456");
+        user.setEmail("testmail@test.de");
+        userService.saveUser(user);
+        conference.setCreatingUser(user);
+                    
+        GeoPosition geo = new GeoPosition();
+        geo.setTimestamp( new Date() );
+        geo.setLatitude( new Double( 2.2 ) );
+        geo.setLongitude( new Double( 17.2 ) );
+        
+        conference.setGeoPosition(geo);
+                    
+        conference.setAccomodation("good");
+        conference.setVenue("Test");
+        conference.setHowtofind("easy");
+
+        conferenceService.saveConference( conference );
+        conference = new Conference();
+        
+        conference.setName("TestConference B");
+        conference.setStartDate(new Date());
+        conference.setEndDate(new Date());
+        conference.setDescription("Das hier ist ein Test! B");
+        conference.setLocation("TestSaal B");
+               
+        user = new User();
+        user.setFirstName( "Foo B" );
+        user.setLastName( "Bar B" );
+        user.setUsername( "Test B" );
+        user.setPassword("123456");
+        user.setEmail("testmail@test.de");
+        userService.saveUser(user);
+        conference.setCreatingUser(user);
+                    
+        geo = new GeoPosition();
+        geo.setTimestamp( new Date() );
+        geo.setLatitude( new Double( 1.2 ) );
+        geo.setLongitude( new Double( 22.2 ) );
+        
+        conference.setGeoPosition(geo);
+                    
+        conference.setAccomodation("goodB");
+        conference.setVenue("Test B");
+        conference.setHowtofind("easyB");
+
+        conferenceService.saveConference( conference );
+        
+        assert conferenceService.findAllConferences().size() >= 2: "ConferenceService.findAll should return more than 2 Conferences";
     }
     
 }

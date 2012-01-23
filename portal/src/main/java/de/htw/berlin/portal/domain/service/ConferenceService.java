@@ -22,10 +22,6 @@ public class ConferenceService {
 
     @PersistenceContext(unitName = "portalPU")
     EntityManager em;
-
-    public void createConference(Conference conference) {
-        em.persist(conference);
-    }
     
     public void saveConference(Conference c){
         em.persist(c);
