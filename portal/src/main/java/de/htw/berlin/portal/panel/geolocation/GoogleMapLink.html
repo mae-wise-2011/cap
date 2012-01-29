@@ -15,6 +15,16 @@
                     <a href="#" target="_blank" wicket:id="link_googlemaps" id="link_googlemaps">Mein Standort</a>
                 </form>
             </div>
+                    
+            <script type="text/javascript">
+                $(document).ready(function() {
+                    navigator.geolocation.getCurrentPosition( function ( data ) {
+                            $( "#latitude" ).val( data.coords.latitude );
+                            $( "#longitude" ).val( data.coords.longitude );
+
+                          } );   
+                });
+            </script>
         </wicket:panel>
     </body>
 </html>
