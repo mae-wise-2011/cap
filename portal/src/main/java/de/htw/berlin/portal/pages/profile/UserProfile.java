@@ -8,6 +8,8 @@ import de.htw.berlin.portal.pages.registration.RegistrationSuccessPage;
 import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextField;
+import org.apache.wicket.markup.html.link.ExternalLink;
+import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
@@ -43,11 +45,23 @@ public class UserProfile extends BasePage {
       }
     };
 
-    form.add( firstName, lastName, userName, email, submit );
+    ExternalLink geoLink = new ExternalLink("geolink", getGooleMapsUrl(), "Meinen Standort anzeigen");
+    
+    form.add( firstName, lastName, userName, email, geoLink, submit );
+    
     this.add( form, new FeedbackPanel( "feedback" ) );
   }
 
   private TextField<String> createInputField( final String name ) {
     return new TextField<String>( name, new PropertyModel<String>( user, name ) );
+  }
+  
+  private String getGooleMapsUrl(){
+      String url = "http://maps.google.de/?ll=%lat%,%long%&spn=0.448881,1.352692&t=m&z=10";
+      url = url.replace("%lat%", "52.523405");
+      url = url.replace("%long%", "13.411399");
+      //url = url.replace("%lat%", user.getRegistrationGeoPosition().getLatitude().toString());
+      //url = url.replace("%long%", user.getRegistrationGeoPosition().getLongitude().toString());
+      return url;
   }
 }
