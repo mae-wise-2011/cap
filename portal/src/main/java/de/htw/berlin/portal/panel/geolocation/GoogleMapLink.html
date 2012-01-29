@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:wicket>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <title>GoogleMapLink</title>
+    </head>
+    <body>
+        <wicket:panel>
+            <div id="geolocation">
+                <form wicket:id="form_geolocation">
+                    <div wicket:id="feedback_geolocation"/>
+                    <input type="hidden" wicket:id="geo_latitude" id="latitude"/>
+                    <input type="hidden" wicket:id="geo_longitude" id="longitude"/>
+                    <a href="#" target="_blank" wicket:id="link_googlemaps" id="link_googlemaps">Mein Standort</a>
+                </form>
+            </div>
+        </wicket:panel>
+    </body>
+</html>
