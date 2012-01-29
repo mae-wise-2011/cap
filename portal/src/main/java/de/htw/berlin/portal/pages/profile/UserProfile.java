@@ -58,10 +58,13 @@ public class UserProfile extends BasePage {
   
   private String getGooleMapsUrl(){
       String url = "http://maps.google.de/?ll=%lat%,%long%&spn=0.448881,1.352692&t=m&z=10";
-      url = url.replace("%lat%", "52.523405");
-      url = url.replace("%long%", "13.411399");
-      //url = url.replace("%lat%", user.getRegistrationGeoPosition().getLatitude().toString());
-      //url = url.replace("%long%", user.getRegistrationGeoPosition().getLongitude().toString());
+      
+      if (user.getRegistrationGeoPosition() != null){
+        url = url.replace("%lat%", user.getRegistrationGeoPosition().getLatitude().toString());
+        url = url.replace("%long%", user.getRegistrationGeoPosition().getLongitude().toString());
+      } else {
+          url = "#";
+      }
       return url;
   }
 }
