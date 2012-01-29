@@ -1,164 +1,220 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
-    <changeSet author="Richard (generated)" id="1327845303793-1">
-        <createTable tableName="sequence">
-            <column name="SEQ_NAME" type="VARCHAR(45)">
-                <constraints nullable="false" primaryKey="true"/>
-            </column>
-            <column name="SEQ_COUNT" type="INT"/>
-        </createTable>
-    </changeSet>
-    <changeSet author="Richard (generated)" id="1327845303793-2">
-        <createTable tableName="table_address">
-            <column autoIncrement="true" name="ID" type="INT">
-                <constraints nullable="false" primaryKey="true"/>
-            </column>
-            <column name="city" type="VARCHAR(45)"/>
-            <column name="country" type="VARCHAR(45)"/>
-            <column name="number" type="VARCHAR(45)"/>
-            <column name="street" type="VARCHAR(45)"/>
-            <column name="zip" type="VARCHAR(45)"/>
-        </createTable>
-    </changeSet>
-    <changeSet author="Richard (generated)" id="1327845303793-3">
-        <createTable tableName="table_category">
-            <column autoIncrement="true" name="ID" type="INT">
-                <constraints nullable="false" primaryKey="true"/>
-            </column>
-            <column name="version" type="VARCHAR(45)"/>
-            <column name="name" type="VARCHAR(45)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="PARENT_ID" type="INT"/>
-        </createTable>
-    </changeSet>
-    <changeSet author="Richard (generated)" id="1327845303793-4">
-        <createTable tableName="table_conference">
-            <column autoIncrement="true" name="ID" type="INT">
-                <constraints nullable="false" primaryKey="true"/>
-            </column>
-            <column name="version" type="VARCHAR(45)"/>
-            <column name="name" type="VARCHAR(256)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="startdate" type="DATE">
-                <constraints nullable="false"/>
-            </column>
-            <column name="enddate" type="DATE">
-                <constraints nullable="false"/>
-            </column>
-            <column name="description" type="TEXT"/>
-            <column name="location" type="TEXT"/>
-            <column name="venue" type="TEXT"/>
-            <column name="accomodation" type="TEXT"/>
-            <column name="howtofind" type="VARCHAR(45)"/>
-            <column name="CREATOR_ID" type="INT"/>
-            <column name="SERIES_ID" type="INT"/>
-            <column name="GPS_ID" type="INT"/>
-        </createTable>
-    </changeSet>
-    <changeSet author="Richard (generated)" id="1327845303793-5">
-        <createTable tableName="table_conference_has_category">
-            <column name="table_conference_ID" type="INT">
-                <constraints nullable="false"/>
-            </column>
-            <column name="table_category_ID" type="INT">
-                <constraints nullable="false"/>
-            </column>
-        </createTable>
-    </changeSet>
-    <changeSet author="Richard (generated)" id="1327845303793-6">
-        <createTable tableName="table_geo_position">
-            <column autoIncrement="true" name="ID" type="INT">
-                <constraints nullable="false" primaryKey="true"/>
-            </column>
-            <column name="gp_latitude" type="DOUBLE">
-                <constraints nullable="false"/>
-            </column>
-            <column name="gp_longitude" type="DOUBLE">
-                <constraints nullable="false"/>
-            </column>
-            <column name="gp_timestamp" type="DATETIME"/>
-        </createTable>
-    </changeSet>
-    <changeSet author="Richard (generated)" id="1327845303793-7">
-        <createTable tableName="table_series">
-            <column autoIncrement="true" name="ID" type="INT">
-                <constraints nullable="false" primaryKey="true"/>
-            </column>
-            <column name="version" type="VARCHAR(45)"/>
-            <column name="name" type="VARCHAR(45)">
-                <constraints nullable="false"/>
-            </column>
-        </createTable>
-    </changeSet>
-    <changeSet author="Richard (generated)" id="1327845303793-8">
-        <createTable tableName="table_series_has_user">
-            <column name="table_series_ID" type="INT">
-                <constraints nullable="false"/>
-            </column>
-            <column name="table_user_ID" type="INT">
-                <constraints nullable="false"/>
-            </column>
-        </createTable>
-    </changeSet>
-    <changeSet author="Richard (generated)" id="1327845303793-9">
-        <createTable tableName="table_user">
-            <column autoIncrement="true" name="ID" type="INT">
-                <constraints nullable="false" primaryKey="true"/>
-            </column>
-            <column name="version" type="VARCHAR(45)"/>
-            <column name="username" type="VARCHAR(45)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="password" type="VARCHAR(256)"/>
-            <column name="firstname" type="VARCHAR(45)"/>
-            <column name="lastname" type="VARCHAR(45)"/>
-            <column name="email" type="VARCHAR(45)"/>
-            <column name="status" type="VARCHAR(45)"/>
-            <column name="ADRESS_ID" type="INT"/>
-            <column name="REGISTRATIONGEOPOSITION_ID" type="INT"/>
-        </createTable>
-    </changeSet>
-    <changeSet author="Richard (generated)" id="1327845303793-10">
-        <addPrimaryKey columnNames="table_conference_ID, table_category_ID" tableName="table_conference_has_category"/>
-    </changeSet>
-    <changeSet author="Richard (generated)" id="1327845303793-11">
-        <addPrimaryKey columnNames="table_series_ID, table_user_ID" tableName="table_series_has_user"/>
-    </changeSet>
-    <changeSet author="Richard (generated)" id="1327845303793-12">
-        <addForeignKeyConstraint baseColumnNames="PARENT_ID" baseTableName="table_category" baseTableSchemaName="portal" constraintName="fk_table_category_table_category1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="ID" referencedTableName="table_category" referencedTableSchemaName="portal" referencesUniqueColumn="false"/>
-    </changeSet>
-    <changeSet author="Richard (generated)" id="1327845303793-13">
-        <addForeignKeyConstraint baseColumnNames="CREATOR_ID" baseTableName="table_conference" baseTableSchemaName="portal" constraintName="fk_table_conference_table_user1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="ID" referencedTableName="table_user" referencedTableSchemaName="portal" referencesUniqueColumn="false"/>
-    </changeSet>
-    <changeSet author="Richard (generated)" id="1327845303793-14">
-        <addForeignKeyConstraint baseColumnNames="GPS_ID" baseTableName="table_conference" baseTableSchemaName="portal" constraintName="fk_table_conference_table_geo_position1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="ID" referencedTableName="table_geo_position" referencedTableSchemaName="portal" referencesUniqueColumn="false"/>
-    </changeSet>
-    <changeSet author="Richard (generated)" id="1327845303793-15">
-        <addForeignKeyConstraint baseColumnNames="SERIES_ID" baseTableName="table_conference" baseTableSchemaName="portal" constraintName="fk_table_conference_table_series1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="ID" referencedTableName="table_series" referencedTableSchemaName="portal" referencesUniqueColumn="false"/>
-    </changeSet>
-    <changeSet author="Richard (generated)" id="1327845303793-16">
-        <addForeignKeyConstraint baseColumnNames="table_category_ID" baseTableName="table_conference_has_category" baseTableSchemaName="portal" constraintName="fk_table_conference_has_category_table_category1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="ID" referencedTableName="table_category" referencedTableSchemaName="portal" referencesUniqueColumn="false"/>
-    </changeSet>
-    <changeSet author="Richard (generated)" id="1327845303793-17">
-        <addForeignKeyConstraint baseColumnNames="table_conference_ID" baseTableName="table_conference_has_category" baseTableSchemaName="portal" constraintName="fk_table_conference_has_category_table_conference1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="ID" referencedTableName="table_conference" referencedTableSchemaName="portal" referencesUniqueColumn="false"/>
-    </changeSet>
-    <changeSet author="Richard (generated)" id="1327845303793-18">
-        <addForeignKeyConstraint baseColumnNames="table_series_ID" baseTableName="table_series_has_user" baseTableSchemaName="portal" constraintName="fk_table_series_has_user_table_series1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="ID" referencedTableName="table_series" referencedTableSchemaName="portal" referencesUniqueColumn="false"/>
-    </changeSet>
-    <changeSet author="Richard (generated)" id="1327845303793-19">
-        <addForeignKeyConstraint baseColumnNames="table_user_ID" baseTableName="table_series_has_user" baseTableSchemaName="portal" constraintName="fk_table_series_has_user_table_user1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="ID" referencedTableName="table_user" referencedTableSchemaName="portal" referencesUniqueColumn="false"/>
-    </changeSet>
-    <changeSet author="Richard (generated)" id="1327845303793-20">
-        <addForeignKeyConstraint baseColumnNames="ADRESS_ID" baseTableName="table_user" baseTableSchemaName="portal" constraintName="fk_table_user_table_adress" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="ID" referencedTableName="table_address" referencedTableSchemaName="portal" referencesUniqueColumn="false"/>
-    </changeSet>
-    <changeSet author="Richard (generated)" id="1327845303793-21">
-        <addForeignKeyConstraint baseColumnNames="REGISTRATIONGEOPOSITION_ID" baseTableName="table_user" baseTableSchemaName="portal" constraintName="fk_table_user_table_geo_position1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="ID" referencedTableName="table_geo_position" referencedTableSchemaName="portal" referencesUniqueColumn="false"/>
-    </changeSet>
-    <changeSet author="Richard (generated)" id="1327845303793-22">
-        <createIndex indexName="username_UNIQUE" tableName="table_user" unique="true">
-            <column name="username"/>
-        </createIndex>
-    </changeSet>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+	
+	<changeSet author="Richard (generated)" id="1327845303793-1">
+		<createTable tableName="sequence">
+			<column name="SEQ_NAME" type="VARCHAR(45)">
+				<constraints nullable="false" primaryKey="true" />
+			</column>
+			<column name="SEQ_COUNT" type="INT" />
+		</createTable>
+	</changeSet>
+	<changeSet author="Richard (generated)" id="1327845303793-2">
+		<createTable tableName="table_address">
+			<column autoIncrement="true" name="ID" type="INT">
+				<constraints nullable="false" primaryKey="true" />
+			</column>
+			<column name="city" type="VARCHAR(45)" />
+			<column name="country" type="VARCHAR(45)" />
+			<column name="number" type="VARCHAR(45)" />
+			<column name="street" type="VARCHAR(45)" />
+			<column name="zip" type="VARCHAR(45)" />
+		</createTable>
+	</changeSet>
+	<changeSet author="Richard (generated)" id="1327845303793-3">
+		<createTable tableName="table_category">
+			<column autoIncrement="true" name="ID" type="INT">
+				<constraints nullable="false" primaryKey="true" />
+			</column>
+			<column name="version" type="VARCHAR(45)" />
+			<column name="name" type="VARCHAR(45)">
+				<constraints nullable="false" />
+			</column>
+			<column name="PARENT_ID" type="INT" />
+		</createTable>
+	</changeSet>
+	<changeSet author="Richard (generated)" id="1327845303793-4">
+		<createTable tableName="table_conference">
+			<column autoIncrement="true" name="ID" type="INT">
+				<constraints nullable="false" primaryKey="true" />
+			</column>
+			<column name="version" type="VARCHAR(45)" />
+			<column name="name" type="VARCHAR(256)">
+				<constraints nullable="false" />
+			</column>
+			<column name="startdate" type="DATE">
+				<constraints nullable="false" />
+			</column>
+			<column name="enddate" type="DATE">
+				<constraints nullable="false" />
+			</column>
+			<column name="description" type="TEXT" />
+			<column name="location" type="TEXT" />
+			<column name="venue" type="TEXT" />
+			<column name="accomodation" type="TEXT" />
+			<column name="howtofind" type="VARCHAR(45)" />
+			<column name="CREATOR_ID" type="INT" />
+			<column name="SERIES_ID" type="INT" />
+			<column name="GPS_ID" type="INT" />
+		</createTable>
+	</changeSet>
+	<changeSet author="Richard (generated)" id="1327845303793-5">
+		<createTable tableName="table_conference_has_category">
+			<column name="table_conference_ID" type="INT">
+				<constraints nullable="false" />
+			</column>
+			<column name="table_category_ID" type="INT">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+	</changeSet>
+	<changeSet author="Richard (generated)" id="1327845303793-6">
+		<createTable tableName="table_geo_position">
+			<column autoIncrement="true" name="ID" type="INT">
+				<constraints nullable="false" primaryKey="true" />
+			</column>
+			<column name="gp_latitude" type="DOUBLE">
+				<constraints nullable="false" />
+			</column>
+			<column name="gp_longitude" type="DOUBLE">
+				<constraints nullable="false" />
+			</column>
+			<column name="gp_timestamp" type="DATETIME" />
+		</createTable>
+	</changeSet>
+	<changeSet author="Richard (generated)" id="1327845303793-7">
+		<createTable tableName="table_series">
+			<column autoIncrement="true" name="ID" type="INT">
+				<constraints nullable="false" primaryKey="true" />
+			</column>
+			<column name="version" type="VARCHAR(45)" />
+			<column name="name" type="VARCHAR(45)">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+	</changeSet>
+	<changeSet author="Richard (generated)" id="1327845303793-8">
+		<createTable tableName="table_series_has_user">
+			<column name="table_series_ID" type="INT">
+				<constraints nullable="false" />
+			</column>
+			<column name="table_user_ID" type="INT">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+	</changeSet>
+	<changeSet author="Richard (generated)" id="1327845303793-9">
+		<createTable tableName="table_user">
+			<column autoIncrement="true" name="ID" type="INT">
+				<constraints nullable="false" primaryKey="true" />
+			</column>
+			<column name="version" type="VARCHAR(45)" />
+			<column name="username" type="VARCHAR(45)">
+				<constraints nullable="false" />
+			</column>
+			<column name="password" type="VARCHAR(256)" />
+			<column name="firstname" type="VARCHAR(45)" />
+			<column name="lastname" type="VARCHAR(45)" />
+			<column name="email" type="VARCHAR(45)" />
+			<column name="status" type="VARCHAR(45)" />
+			<column name="ADRESS_ID" type="INT" />
+			<column name="REGISTRATIONGEOPOSITION_ID" type="INT" />
+		</createTable>
+	</changeSet>
+	<changeSet author="Richard (generated)" id="1327845303793-10">
+		<addPrimaryKey columnNames="table_conference_ID, table_category_ID"
+			tableName="table_conference_has_category" />
+	</changeSet>
+	<changeSet author="Richard (generated)" id="1327845303793-11">
+		<addPrimaryKey columnNames="table_series_ID, table_user_ID"
+			tableName="table_series_has_user" />
+	</changeSet>
+	<changeSet author="Richard (generated)" id="1327845303793-12">
+		<addForeignKeyConstraint baseColumnNames="PARENT_ID"
+			baseTableName="table_category" baseTableSchemaName="portal"
+			constraintName="fk_table_category_table_category1" deferrable="false"
+			initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+			referencedColumnNames="ID" referencedTableName="table_category"
+			referencedTableSchemaName="portal" referencesUniqueColumn="false" />
+	</changeSet>
+	<changeSet author="Richard (generated)" id="1327845303793-13">
+		<addForeignKeyConstraint baseColumnNames="CREATOR_ID"
+			baseTableName="table_conference" baseTableSchemaName="portal"
+			constraintName="fk_table_conference_table_user1" deferrable="false"
+			initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+			referencedColumnNames="ID" referencedTableName="table_user"
+			referencedTableSchemaName="portal" referencesUniqueColumn="false" />
+	</changeSet>
+	<changeSet author="Richard (generated)" id="1327845303793-14">
+		<addForeignKeyConstraint baseColumnNames="GPS_ID"
+			baseTableName="table_conference" baseTableSchemaName="portal"
+			constraintName="fk_table_conference_table_geo_position1" deferrable="false"
+			initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+			referencedColumnNames="ID" referencedTableName="table_geo_position"
+			referencedTableSchemaName="portal" referencesUniqueColumn="false" />
+	</changeSet>
+	<changeSet author="Richard (generated)" id="1327845303793-15">
+		<addForeignKeyConstraint baseColumnNames="SERIES_ID"
+			baseTableName="table_conference" baseTableSchemaName="portal"
+			constraintName="fk_table_conference_table_series1" deferrable="false"
+			initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+			referencedColumnNames="ID" referencedTableName="table_series"
+			referencedTableSchemaName="portal" referencesUniqueColumn="false" />
+	</changeSet>
+	<changeSet author="Richard (generated)" id="1327845303793-16">
+		<addForeignKeyConstraint baseColumnNames="table_category_ID"
+			baseTableName="table_conference_has_category" baseTableSchemaName="portal"
+			constraintName="fk_table_conference_has_category_table_category1"
+			deferrable="false" initiallyDeferred="false" onDelete="NO ACTION"
+			onUpdate="NO ACTION" referencedColumnNames="ID" referencedTableName="table_category"
+			referencedTableSchemaName="portal" referencesUniqueColumn="false" />
+	</changeSet>
+	<changeSet author="Richard (generated)" id="1327845303793-17">
+		<addForeignKeyConstraint baseColumnNames="table_conference_ID"
+			baseTableName="table_conference_has_category" baseTableSchemaName="portal"
+			constraintName="fk_table_conference_has_category_table_conference1"
+			deferrable="false" initiallyDeferred="false" onDelete="NO ACTION"
+			onUpdate="NO ACTION" referencedColumnNames="ID" referencedTableName="table_conference"
+			referencedTableSchemaName="portal" referencesUniqueColumn="false" />
+	</changeSet>
+	<changeSet author="Richard (generated)" id="1327845303793-18">
+		<addForeignKeyConstraint baseColumnNames="table_series_ID"
+			baseTableName="table_series_has_user" baseTableSchemaName="portal"
+			constraintName="fk_table_series_has_user_table_series1" deferrable="false"
+			initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+			referencedColumnNames="ID" referencedTableName="table_series"
+			referencedTableSchemaName="portal" referencesUniqueColumn="false" />
+	</changeSet>
+	<changeSet author="Richard (generated)" id="1327845303793-19">
+		<addForeignKeyConstraint baseColumnNames="table_user_ID"
+			baseTableName="table_series_has_user" baseTableSchemaName="portal"
+			constraintName="fk_table_series_has_user_table_user1" deferrable="false"
+			initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+			referencedColumnNames="ID" referencedTableName="table_user"
+			referencedTableSchemaName="portal" referencesUniqueColumn="false" />
+	</changeSet>
+	<changeSet author="Richard (generated)" id="1327845303793-20">
+		<addForeignKeyConstraint baseColumnNames="ADRESS_ID"
+			baseTableName="table_user" baseTableSchemaName="portal"
+			constraintName="fk_table_user_table_adress" deferrable="false"
+			initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+			referencedColumnNames="ID" referencedTableName="table_address"
+			referencedTableSchemaName="portal" referencesUniqueColumn="false" />
+	</changeSet>
+	<changeSet author="Richard (generated)" id="1327845303793-21">
+		<addForeignKeyConstraint baseColumnNames="REGISTRATIONGEOPOSITION_ID"
+			baseTableName="table_user" baseTableSchemaName="portal"
+			constraintName="fk_table_user_table_geo_position1" deferrable="false"
+			initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+			referencedColumnNames="ID" referencedTableName="table_geo_position"
+			referencedTableSchemaName="portal" referencesUniqueColumn="false" />
+	</changeSet>
+	<changeSet author="Richard (generated)" id="1327845303793-22">
+		<createIndex indexName="username_UNIQUE" tableName="table_user"
+			unique="true">
+			<column name="username" />
+		</createIndex>
+	</changeSet>
 </databaseChangeLog>
