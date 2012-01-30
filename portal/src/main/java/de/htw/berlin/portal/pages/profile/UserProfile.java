@@ -45,11 +45,9 @@ public class UserProfile extends BasePage {
       }
     };
 
-    //ExternalLink geoLink = new ExternalLink("geolink", getGooleMapsUrl(), "Meinen Standort anzeigen");
+    ExternalLink geoLink = new ExternalLink("geolink", getGooleMapsUrl(), "Meinen Standort anzeigen");
     
-    form.add( firstName, lastName, userName, email, 
-            //geoLink, 
-            submit );
+    form.add( firstName, lastName, userName, email, geoLink, submit );
     
     this.add( form, new FeedbackPanel( "feedback" ) );
   }
